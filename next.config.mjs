@@ -7,9 +7,8 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  // Uncomment and set if you're deploying to a subdirectory on GitHub Pages
-  // basePath: '/ProxiTech-Website',
-  // assetPrefix: '/ProxiTech-Website',
+  // No basePath needed since we're using a custom domain at root
+  // basePath and assetPrefix are commented out for root domain deployment
 }
 
 export default nextConfig
