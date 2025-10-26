@@ -6,11 +6,29 @@
 ✅ Next.js configured for static export  
 ✅ GitHub Actions workflow created  
 ✅ Dependencies installed  
-⚠️ Node.js version needs upgrading (currently 18.19.1, need >=20.9.0)  
+✅ Node.js v20.19.5 installed via nvm  
+✅ Build tested and working successfully  
 
 ## Next Steps
 
-### 1. Upgrade Node.js (Required)
+### Setup nvm in Your Shell (Optional but Recommended)
+
+If you open a new terminal, you'll need to load nvm:
+
+```bash
+# Add to your ~/.bashrc (if not already there)
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+
+# Or just run in current shell
+source ~/.bashrc
+
+# Verify Node.js 20 is available
+nvm use 20
+node --version  # Should show v20.19.5
+```
+
+### 1. Node.js Setup (Already Complete)
 
 You need Node.js 20+ to build the website. Use one of these methods:
 
