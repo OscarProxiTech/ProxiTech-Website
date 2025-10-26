@@ -7,6 +7,7 @@ import "./globals.css"
 const geist = Geist({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://www.proxitech.com.au'),
   title: "ProxiTech - Robotics and AI Education",
   description:
     "Empowering Robotics and AI Education. ProxiTech bridges technology and learning — bringing robotics, AI, and engineering innovation to classrooms and industries.",
@@ -22,6 +23,14 @@ export const metadata: Metadata = {
     type: "website",
     url: "https://www.proxitech.com.au",
     siteName: "ProxiTech",
+    images: [
+      {
+        url: '/og-image.png',
+        width: 1200,
+        height: 1200,
+        alt: 'ProxiTech Icon',
+      },
+    ],
   },
 }
 
