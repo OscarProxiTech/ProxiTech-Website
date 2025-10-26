@@ -36,7 +36,7 @@ export default function EducationPage() {
 
   return (
     <>
-      <Navbar />
+      <Navbar mode="education" />
       <main>
         {/* Hero Section */}
         <section className="pt-32 pb-20 bg-gradient-to-b from-primary/10 to-background">

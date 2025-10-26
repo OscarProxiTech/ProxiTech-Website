@@ -33,7 +33,7 @@ export default function EngineeringPage() {
 
   return (
     <div className="bg-gray-950 text-gray-100 min-h-screen">
-      <Navbar mode="engineering" setMode={() => {}} />
+      <Navbar mode="engineering" />
       <main>
         {/* Hero Section */}
         <section className="pt-32 pb-20 bg-gradient-to-b from-primary/20 to-gray-950">

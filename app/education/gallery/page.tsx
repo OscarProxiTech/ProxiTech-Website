@@ -38,7 +38,7 @@ export default function GalleryPage() {
 
   return (
     <>
-      <Navbar mode="education" setMode={() => {}} />
+      <Navbar mode="education" />
       <main className="min-h-screen">
         {/* Hero Section */}
         <section className="pt-32 pb-20 bg-gradient-to-b from-primary/10 to-background">

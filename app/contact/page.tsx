@@ -6,7 +6,7 @@ import { Toaster } from "@/components/ui/toaster"
 export default function ContactPage() {
   return (
     <>
-      <Navbar />
+      <Navbar mode="education" />
       <main>
         {/* Hero Section */}
         <section className="pt-32 pb-12 bg-gradient-to-b from-primary/10 to-background">
@@ -21,9 +21,9 @@ export default function ContactPage() {
         </section>
 
         {/* Contact Form */}
-        <ContactForm />
+        <ContactForm mode="education" />
       </main>
-      <Footer />
+      <Footer mode="education" />
       <Toaster />
     </>
   )

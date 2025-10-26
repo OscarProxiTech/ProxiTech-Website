@@ -10,7 +10,7 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigge
 
 interface NavbarProps {
   mode: "education" | "engineering"
-  setMode: (mode: "education" | "engineering") => void
+  setMode?: (mode: "education" | "engineering") => void
 }
 
 export function Navbar({ mode, setMode }: NavbarProps) {
@@ -162,7 +162,7 @@ export function Navbar({ mode, setMode }: NavbarProps) {
             <Button
               variant="outline"
               size="sm"
-              onClick={() => setMode(mode === "education" ? "engineering" : "education")}
+              onClick={() => setMode?.(mode === "education" ? "engineering" : "education")}
               className={cn(
                 "ml-2",
                 mode === "engineering"
@@ -280,7 +280,7 @@ export function Navbar({ mode, setMode }: NavbarProps) {
               variant="outline"
               size="sm"
               onClick={() => {
-                setMode(mode === "education" ? "engineering" : "education")
+                setMode?.(mode === "education" ? "engineering" : "education")
                 setMobileMenuOpen(false)
               }}
               className={cn(
