@@ -3,35 +3,53 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* ============================================================================
+   ProxiTech Brand Colour Palette - Based on #641E7C
+   ============================================================================ */
+
 :root {
-  /* Updated to use ProxiTech brand purple #4B0A57 (rgb(75, 10, 87)) as primary color */
+  /* Education Theme (Light Mode) - Clean and professional */
   --background: oklch(0.99 0.005 300);
   --foreground: oklch(0.15 0.02 300);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.15 0.02 300);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.15 0.02 300);
-  /* ProxiTech brand purple #4B0A57 */
+
+  /* Primary purple: #641E7C - Standard brand colour */
   --primary: 300 85% 19%;
   --primary-foreground: 0 0% 100%;
-  --secondary: oklch(0.75 0.08 300);
+  --primary-hover: 300 70% 25%; /* #7D2A9C */
+  --primary-active: 300 90% 15%; /* #4B1459 */
+
+  /* UI Components */
+  --secondary: oklch(0.97 0.02 300);
   --secondary-foreground: oklch(0.15 0.02 300);
   --muted: oklch(0.96 0.01 300);
   --muted-foreground: oklch(0.5 0.02 300);
-  /* Accent using lighter ProxiTech purple */
-  --accent: 300 70% 45%;
-  --accent-foreground: oklch(0.99 0.005 300);
+  --accent: oklch(0.92 0.04 300);
+  --accent-foreground: oklch(0.15 0.02 300);
+  
+  /* Status colours */
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.99 0.005 300);
+
+  /* Borders and inputs */
   --border: oklch(0.9 0.01 300);
   --input: oklch(0.9 0.01 300);
   --ring: 300 85% 19%;
+
+  /* Chart colours for data visualisation */
   --chart-1: 300 85% 19%;
-  --chart-2: 300 70% 35%;
-  --chart-3: 300 60% 50%;
-  --chart-4: 300 50% 60%;
-  --chart-5: 300 40% 70%;
+  --chart-2: 300 70% 30%;
+  --chart-3: 300 60% 45%;
+  --chart-4: 300 50% 55%;
+  --chart-5: 300 40% 65%;
+
+  /* Component settings */
   --radius: 0.625rem;
+  
+  /* Sidebar theme for education mode */
   --sidebar: oklch(0.985 0 0);
   --sidebar-foreground: oklch(0.145 0 0);
   --sidebar-primary: oklch(0.205 0 0);
@@ -43,33 +61,48 @@
 }
 
 .dark {
-  /* Dark mode with consistent ProxiTech purple theming */
+  /* Engineering Theme (Dark Mode) - Modern and technical */
   --background: oklch(0.12 0.02 300);
   --foreground: oklch(0.98 0.005 300);
   --card: oklch(0.15 0.02 300);
   --card-foreground: oklch(0.98 0.005 300);
   --popover: oklch(0.15 0.02 300);
   --popover-foreground: oklch(0.98 0.005 300);
-  /* Lighter ProxiTech purple for dark mode */
-  --primary: 300 70% 60%;
+
+  /* Primary purple: #9D4EDD - Lightened for accessibility on dark */
+  --primary: 300 60% 70%;
   --primary-foreground: oklch(0.12 0.02 300);
+  --primary-hover: 300 55% 75%; /* #B87FE7 */
+  --primary-active: 300 65% 65%; /* #7D2A9C */
+
+  /* UI Components */
   --secondary: oklch(0.25 0.05 300);
   --secondary-foreground: oklch(0.98 0.005 300);
   --muted: oklch(0.2 0.03 300);
   --muted-foreground: oklch(0.65 0.05 300);
-  /* Accent using medium ProxiTech purple for dark mode */
-  --accent: 300 60% 70%;
-  --accent-foreground: oklch(0.12 0.02 300);
+  --accent: oklch(0.3 0.06 300);
+  --accent-foreground: oklch(0.98 0.005 300);
+  
+  /* Status colours */
   --destructive: oklch(0.5 0.2 27.325);
   --destructive-foreground: oklch(0.98 0.005 300);
+
+  /* Borders and inputs */
   --border: oklch(0.25 0.05 300);
   --input: oklch(0.25 0.05 300);
-  --ring: 300 70% 60%;
-  --chart-1: 300 70% 60%;
-  --chart-2: 300 60% 70%;
-  --chart-3: 300 50% 75%;
-  --chart-4: 300 45% 65%;
-  --chart-5: 300 55% 55%;
+  --ring: 300 60% 70%;
+
+  /* Chart colours optimised for dark backgrounds */
+  --chart-1: 300 60% 70%;
+  --chart-2: 300 55% 75%;
+  --chart-3: 300 50% 80%;
+  --chart-4: 300 45% 70%;
+  --chart-5: 300 65% 65%;
+
+  /* Component settings */
+  --radius: 0.625rem;
+
+  /* Sidebar theme for engineering mode */
   --sidebar: oklch(0.205 0 0);
   --sidebar-foreground: oklch(0.985 0 0);
   --sidebar-primary: oklch(0.488 0.243 264.376);
@@ -81,8 +114,11 @@
 }
 
 @theme inline {
+  /* Font families */
   --font-sans: "Geist", "Geist Fallback";
   --font-mono: "Geist Mono", "Geist Mono Fallback";
+  
+  /* Colour mapping for Tailwind */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -102,15 +138,21 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
+  
+  /* Chart colours */
   --color-chart-1: var(--chart-1);
   --color-chart-2: var(--chart-2);
   --color-chart-3: var(--chart-3);
   --color-chart-4: var(--chart-4);
   --color-chart-5: var(--chart-5);
+  
+  /* Radius utilities */
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+  
+  /* Sidebar theme */
   --color-sidebar: var(--sidebar);
   --color-sidebar-foreground: var(--sidebar-foreground);
   --color-sidebar-primary: var(--sidebar-primary);
@@ -119,6 +161,49 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+}
+
+/* ============================================================================
+   Utility Classes for Consistent Styling
+   ============================================================================ */
+
+@layer utilities {
+  /* Button variants using brand colours */
+  .btn-primary {
+    background-color: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+  }
+  
+  .btn-primary:hover {
+    background-color: hsl(var(--primary-hover));
+  }
+  
+  .btn-primary:active {
+    background-color: hsl(var(--primary-active));
+  }
+  
+  /* Border utilities */
+  .border-purple-primary {
+    border-color: hsl(var(--primary));
+  }
+  
+  /* Text utilities */
+  .text-purple-primary {
+    color: hsl(var(--primary));
+  }
+  
+  /* Background utilities */
+  .bg-purple-primary {
+    background-color: hsl(var(--primary));
+  }
+  
+  .bg-purple-primary\/10 {
+    background-color: hsl(var(--primary) / 0.1);
+  }
+  
+  .bg-purple-primary\/20 {
+    background-color: hsl(var(--primary) / 0.2);
+  }
 }
 
 @layer base {
@@ -181,8 +266,8 @@
   position: absolute;
   width: 4px;
   height: 4px;
-  /* Updated particle color to match streamlined purple theme */
-  background: rgb(192, 132, 252, 0.3);
+  /* Particle colour matches ProxiTech purple theme */
+  background: rgb(100, 30, 124, 0.3);
   border-radius: 50%;
   animation: float 6s ease-in-out infinite;
 }

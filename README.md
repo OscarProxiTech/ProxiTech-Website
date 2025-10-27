@@ -153,17 +153,25 @@ assetPrefix: '/proxitech-website',
 ```
 /
 ├── app/                    # Next.js app directory
-│   ├── about/
-│   ├── blog/
-│   ├── contact/
-│   ├── education/
-│   └── engineering/
-├── components/             # React components
-│   ├── ui/                # shadcn/ui components
-│   └── ...
+│   ├── about/             # About page
+│   ├── blog/              # Blog page
+│   ├── contact/           # Contact page
+│   ├── education/         # Education pages
+│   ├── engineering/       # Engineering pages
+│   ├── globals.css        # Global styles & theme
+│   └── layout.tsx         # Root layout
+├── components/            # React components
+│   ├── ui/               # shadcn/ui components
+│   └── ...               # Site-specific components
+├── lib/                   # Utilities
+│   └── utils.ts          # Helper functions
 ├── public/                # Static assets
-│   └── images/
-└── styles/                # Global styles
+│   ├── images/
+│   │   ├── logos/        # Icon files
+│   │   ├── branding/     # Brand images
+│   │   └── placeholders/ # Placeholder images
+│   └── CNAME             # Custom domain config
+└── out/                   # Build output (generated)
 ```
 
 ## Tech Stack
@@ -173,6 +181,34 @@ assetPrefix: '/proxitech-website',
 - **Tailwind CSS** - Styling
 - **shadcn/ui** - UI components
 - **Radix UI** - Accessible component primitives
+
+## Contributing
+
+### Commit Message Format
+
+This project follows [Conventional Commits](https://www.conventionalcommits.org/) specification:
+
+```
+<type>(<scope>): <subject>
+```
+
+**Types:**
+- `feat`: New feature
+- `fix`: Bug fix
+- `docs`: Documentation changes
+- `style`: Code style changes (formatting, etc.)
+- `refactor`: Code refactoring
+- `perf`: Performance improvements
+- `test`: Adding or updating tests
+- `chore`: Build process or auxiliary tool changes
+
+**Examples:**
+```bash
+feat(theme): add comprehensive colour palette based on #641E7C
+fix(navbar): correct icon paths to use local images
+refactor: reorganise image directory structure
+docs: update README with Conventional Commits format
+```
 
 ## License
 

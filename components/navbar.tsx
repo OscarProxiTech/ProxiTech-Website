@@ -40,11 +40,7 @@ export function Navbar({ mode, setMode }: NavbarProps) {
         <div className="flex items-center justify-between h-16">
           <Link href="/" className="flex items-center">
             <Image
-              src={
-                mode === "engineering"
-                  ? "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ProxiTech%20Icon%20Dark-w4D0LkLDanteYXYsfnC74j9cJS0aEE.png"
-                  : "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ProxiTech%20Icon-dciQtdBQQiPAm5huzYBuEnj6RwYjG1.png"
-              }
+              src={mode === "engineering" ? "/images/logos/proxitech-icon-dark.png" : "/images/logos/proxitech-icon.png"}
               alt="ProxiTech"
               width={40}
               height={40}
@@ -166,8 +162,8 @@ export function Navbar({ mode, setMode }: NavbarProps) {
               className={cn(
                 "ml-2",
                 mode === "engineering"
-                  ? "border-purple-500 text-purple-400 hover:bg-purple-500/10"
-                  : "border-purple-600 text-purple-600 hover:bg-purple-50",
+                  ? "border-purple-primary text-purple-300 hover:bg-purple-primary/10"
+                  : "border-purple-primary text-purple-primary hover:bg-purple-primary/10",
               )}
             >
               {mode === "education" ? "Engineering" : "Education"}
@@ -286,8 +282,8 @@ export function Navbar({ mode, setMode }: NavbarProps) {
               className={cn(
                 "mt-2 w-full",
                 mode === "engineering"
-                  ? "border-purple-500 text-purple-400 hover:bg-purple-500/10"
-                  : "border-purple-600 text-purple-600 hover:bg-purple-50",
+                  ? "border-purple-primary text-purple-300 hover:bg-purple-primary/10"
+                  : "border-purple-primary text-purple-primary hover:bg-purple-primary/10",
               )}
             >
               Switch to {mode === "education" ? "Engineering" : "Education"}

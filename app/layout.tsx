@@ -13,8 +13,8 @@ export const metadata: Metadata = {
     "Empowering Robotics and AI Education. ProxiTech bridges technology and learning — bringing robotics, AI, and engineering innovation to classrooms and industries.",
   generator: "v0.app",
   icons: {
-    icon: '/favicon.png',
-    apple: '/favicon.png',
+    icon: '/images/logos/proxitech-icon-white.png',
+    apple: '/images/logos/proxitech-icon-white.png',
   },
   openGraph: {
     title: "ProxiTech - Robotics and AI Education",
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     siteName: "ProxiTech",
     images: [
       {
-        url: '/og-image.png',
+        url: '/images/logos/proxitech-icon-white.png',
         width: 1200,
         height: 1200,
         alt: 'ProxiTech Icon',

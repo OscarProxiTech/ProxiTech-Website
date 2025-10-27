@@ -16,11 +16,7 @@ export function Footer({ mode }: FooterProps) {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="col-span-1 md:col-span-2">
             <Image
-              src={
-                mode === "engineering"
-                  ? "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ProxiTech%20Dark-TJm1w7dADnJoOroXb7rBHntfZbleR9.png"
-                  : "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ProxiTech-qAvkKerqe1iTReRuC3VgqAruricjoa.png"
-              }
+              src={mode === "engineering" ? "/images/branding/proxitech-logo-dark.png" : "/images/branding/proxitech-logo.png"}
               alt="ProxiTech"
               width={200}
               height={45}

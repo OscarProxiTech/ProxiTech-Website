@@ -63,10 +63,10 @@ export function DualHeroSection({ mode, setMode }: DualHeroSectionProps) {
             className={cn(
               "gap-3 transition-all px-8 py-6 text-lg font-semibold min-w-[200px]",
               mode === "education"
-                ? "bg-purple-600 hover:bg-purple-700 text-white shadow-lg"
+                ? "bg-purple-primary hover:bg-purple-primary/90 text-white shadow-lg"
                 : mode === "engineering"
-                  ? "border-2 border-purple-400 text-purple-300 hover:bg-purple-400/20 bg-gray-900/50"
-                  : "border-2 border-purple-600 text-purple-600 hover:bg-purple-50",
+                  ? "border-2 border-purple-primary text-purple-primary hover:bg-purple-primary/20 bg-gray-900/50"
+                  : "border-2 border-purple-primary text-purple-primary hover:bg-purple-primary/10",
             )}
           >
             <GraduationCap className="h-6 w-6" />
@@ -79,8 +79,8 @@ export function DualHeroSection({ mode, setMode }: DualHeroSectionProps) {
             className={cn(
               "gap-3 transition-all px-8 py-6 text-lg font-semibold min-w-[200px]",
               mode === "engineering"
-                ? "bg-purple-600 hover:bg-purple-700 text-white shadow-lg"
-                : "border-2 border-purple-600 text-purple-600 hover:bg-purple-50",
+                ? "bg-purple-primary hover:bg-purple-primary/90 text-white shadow-lg"
+                : "border-2 border-purple-primary text-purple-primary hover:bg-purple-primary/10",
             )}
           >
             <Wrench className="h-6 w-6" />
@@ -98,8 +98,8 @@ export function DualHeroSection({ mode, setMode }: DualHeroSectionProps) {
           <Image
             src={
               mode === "engineering"
-                ? "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ProxiTech%20Engineering%20Dark-emMZJBW5kmtkg6HoechOs4pVTPo2rk.png"
-                : "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ProxiTech%20Education-6iG2WE0JGUEyHZJltKAKZ5VRSmhnoD.png"
+                ? "/images/branding/proxitech-engineering-dark.png"
+                : "/images/branding/proxitech-education.png"
             }
             alt={mode === "engineering" ? "ProxiTech Engineering Development" : "ProxiTech Robotics and A.I. Education"}
             width={600}
@@ -143,7 +143,7 @@ export function DualHeroSection({ mode, setMode }: DualHeroSectionProps) {
           style={{ animationDelay: "0.9s" }}
         >
           <Link href={mode === "education" ? "/education" : "/engineering"}>
-            <Button size="lg" className={cn("group", "bg-purple-600 hover:bg-purple-700 text-white shadow-lg")}>
+            <Button size="lg" className={cn("group", "bg-purple-primary hover:bg-purple-primary/90 text-white shadow-lg")}>
               {mode === "education" ? "Explore Programs" : "View Projects"}
               <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
             </Button>
@@ -157,8 +157,8 @@ export function DualHeroSection({ mode, setMode }: DualHeroSectionProps) {
             }}
             className={cn(
               mode === "engineering"
-                ? "border-2 border-purple-400 text-purple-300 hover:bg-purple-400/20 bg-gray-900/50"
-                : "border-2 border-purple-600 text-purple-600 hover:bg-purple-50",
+                ? "border-2 border-purple-primary text-purple-primary hover:bg-purple-primary/20 bg-gray-900/50"
+                : "border-2 border-purple-primary text-purple-primary hover:bg-purple-primary/10",
             )}
           >
             Get in Touch

@@ -1,168 +1,255 @@
-# Deployment Guide for ProxiTech Website
+# ProxiTech Website Deployment Guide
 
-## Current Setup Status
+This guide walks you through deploying the ProxiTech website to GitHub Pages with your custom domain.
 
-✅ Repository initialised and ready  
-✅ Next.js configured for static export  
-✅ GitHub Actions workflow created  
-✅ Dependencies installed  
-✅ Node.js v20.19.5 installed via nvm  
-✅ Build tested and working successfully  
+## Prerequisites
 
-## Next Steps
+- ✅ Node.js 20+ installed (via nvm)
+- ✅ Git repository ready
+- ✅ GitHub account
+- ✅ Domain registrar access for `proxitech.com.au`
 
-### Setup nvm in Your Shell (Optional but Recommended)
+## Step 1: Push Your Code to GitHub
 
-If you open a new terminal, you'll need to load nvm:
+### 1.1 Create a GitHub Repository
 
-```bash
-# Add to your ~/.bashrc (if not already there)
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+1. Go to [GitHub](https://github.com/new)
+2. Repository name: `proxitech-website` (or your choice)
+3. Set as **Public** (required for free GitHub Pages)
+4. **Don't** initialize with README (we already have files)
+5. Click "Create repository"
 
-# Or just run in current shell
-source ~/.bashrc
-
-# Verify Node.js 20 is available
-nvm use 20
-node --version  # Should show v20.19.5
-```
-
-### 1. Node.js Setup (Already Complete)
-
-You need Node.js 20+ to build the website. Use one of these methods:
-
-#### Option A: Using nvm (Recommended)
+### 1.2 Push Your Local Code
 
 ```bash
-# Install nvm if not already installed
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
+# Make sure nvm is loaded
+export NVM_DIR="$HOME/.nvm" && [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
-# Reload your shell configuration
-source ~/.bashrc
-
-# Install and use Node.js 20
-nvm install 20
-nvm use 20
-
-# Verify
-node --version
-```
-
-#### Option B: Using snap
-
-```bash
-sudo snap install node --classic
-```
-
-#### Option C: Download from nodejs.org
-
-Visit https://nodejs.org/ and download Node.js 20 LTS.
-
-### 2. Test the Build
-
-Once Node.js is upgraded:
-
-```bash
-# Test the build process
-npm run build
-
-# If successful, you should see an 'out' directory created
-ls -la out/
-```
-
-### 3. Push to GitHub
-
-Create a new repository on GitHub, then:
-
-```bash
+# Add the GitHub remote (replace YOUR-USERNAME with your GitHub username)
 git remote add origin https://github.com/YOUR-USERNAME/proxitech-website.git
+
+# Push your code
+git branch -M main
 git push -u origin main
 ```
 
-### 4. Configure GitHub Pages
+## Step 2: Enable GitHub Pages
 
 1. Go to your repository on GitHub
 2. Navigate to **Settings** → **Pages**
 3. Under "Source", select **GitHub Actions**
-4. The workflow file (`.github/workflows/deploy.yml`) will automatically run on every push to `main`
+4. The workflow will automatically deploy on the next push
 
-### 5. Access Your Site
+## Step 3: Configure Your Domain
+
+### 3.1 DNS Configuration at Your Domain Registrar
+
+You need to add these DNS records for `proxitech.com.au`:
+
+#### Option A: Use `www` subdomain (Recommended)
+
+**Add these DNS records:**
+
+| Type | Name  | Value                   | TTL  |
+|------|-------|-------------------------|------|
+| CNAME| www   | `YOUR-USERNAME.github.io` | 3600 |
+| A    | @     | `185.199.108.153`          | 3600 |
+| A    | @     | `185.199.109.153`          | 3600 |
+| A    | @     | `185.199.110.153`          | 3600 |
+| A    | @     | `185.199.111.153`          | 3600 |
+
+Replace `YOUR-USERNAME` with your GitHub username.
+
+**Example if your username is `oscar`:**
+- `www.proxitech.com.au` → `oscar.github.io`
+
+#### Option B: Use Apex Domain (Root domain)
+
+**Add these A records:**
+
+| Type | Name  | Value              | TTL  |
+|------|-------|--------------------|------|
+| A    | @     | `185.199.108.153`   | 3600 |
+| A    | @     | `185.199.109.153`   | 3600 |
+| A    | @     | `185.199.110.153`   | 3600 |
+| A    | @     | `185.199.111.153`   | 3600 |
+
+If using apex domain, also update the `public/CNAME` file to use `proxitech.com.au` instead of `www.proxitech.com.au`.
+
+### 3.2 Where to Add DNS Records
+
+The location depends on your domain registrar. Common providers:
+
+- **Cloudflare**: DNS dashboard → Add records
+- **Namecheap**: Domain List → Manage → Advanced DNS
+- **Google Domains**: DNS → Custom resource records
+- **GoDaddy**: My Products → DNS Management
+- **AU Domain**: DNS Hosting → DNS Management
+
+### 3.3 Verify DNS Propagation
+
+After adding the records, verify they're working:
+
+```bash
+# Check CNAME record
+dig www.proxitech.com.au CNAME
+
+# Check A records
+dig proxitech.com.au A
+```
+
+Or use online tools like:
+- https://dnschecker.org/
+- https://www.whatsmydns.net/
+
+## Step 4: Configure Custom Domain in GitHub
+
+After DNS is configured:
+
+1. Go to your repository on GitHub
+2. Navigate to **Settings** → **Pages**
+3. Scroll to "Custom domain" section
+4. Enter: `www.proxitech.com.au` (or `proxitech.com.au` if using apex)
+5. Check **"Enforce HTTPS"** (may take a few minutes to become available)
+6. GitHub will automatically create the `CNAME` file in your repository
+
+## Step 5: Deploy and Verify
+
+### 5.1 Initial Deployment
+
+After the first push, GitHub Actions will:
+
+1. Build your Next.js site
+2. Generate static files in `out/` directory
+3. Deploy to GitHub Pages
+
+### 5.2 Monitor Deployment
+
+1. Go to your repository
+2. Click the **Actions** tab
+3. Watch the workflow run
+4. A green checkmark means success!
+
+### 5.3 Access Your Site
 
 Your site will be available at:
-- `https://YOUR-USERNAME.github.io/proxitech-website/`
+- `https://www.proxitech.com.au` (after DNS propagates)
+- `https://YOUR-USERNAME.github.io/proxitech-website` (immediately)
 
-If you want it at the root of your GitHub Pages site (`https://YOUR-USERNAME.github.io/`):
-1. Create a repository named `YOUR-USERNAME.github.io`
-2. Push this code there
-3. Update `next.config.mjs` and remove the `basePath` and `assetPrefix` comments
+**Note:** DNS propagation can take 5 minutes to 48 hours, but usually completes within 1-2 hours.
+
+## Step 6: HTTPS Certificate
+
+GitHub Pages automatically provisions SSL certificates for custom domains via Let's Encrypt. This happens automatically after:
+
+1. DNS records are correctly configured
+2. The domain is added in GitHub Pages settings
+3. GitHub verifies domain ownership
+
+The certificate is usually ready within 24 hours, often much sooner.
+
+## Troubleshooting
+
+### Site Not Loading
+
+1. **Check DNS**: Use `dig` or online tools to verify DNS records
+2. **Wait**: DNS propagation can take time
+3. **Check workflow**: Go to Actions tab, ensure deployment succeeded
+4. **Check domain**: Verify domain is listed in Pages settings
+
+### Mixed Content Warnings
+
+Make sure all your images and assets use HTTPS URLs.
+
+### Build Failures
+
+Check the Actions tab for error messages. Common issues:
+- Node.js version issues
+- Dependency conflicts
+- TypeScript errors
+
+### Domain Still Redirecting to GitHub URL
+
+1. Clear browser cache
+2. Wait for DNS to fully propagate (up to 48 hours)
+3. Try incognito/private browsing mode
+
+## Updating Your Site
+
+To update your site, simply push changes:
+
+```bash
+git add .
+git commit -m "Your update message"
+git push
+```
+
+GitHub Actions will automatically rebuild and deploy!
 
 ## Development Workflow
 
-### Making Changes Locally
+### Make Changes Locally
 
 ```bash
-# Start development server
+# Start dev server
 npm run dev
 
-# Visit http://localhost:3000
+# Preview at http://localhost:3000
 ```
 
-### Building
+### Build and Test Locally
 
 ```bash
 # Build static files
 npm run build
 
-# Preview the build locally
+# Preview build
 npx serve out
 ```
 
-### Pushing Changes
+### Push Changes
 
 ```bash
-# After making changes
 git add .
-git commit -m "Your commit message"
+git commit -m "Description of changes"
 git push
-
-# The GitHub Actions workflow will automatically deploy
 ```
 
-## Important Notes
+## Additional Configuration
 
-- The site is configured for static export (no server-side rendering)
-- Images are unoptimized for GitHub Pages compatibility
-- TypeScript build errors are ignored for now (`ignoreBuildErrors: true`)
-- Hot reload is available during development but not in the static build
+### Subdirectory on Domain
 
-## Troubleshooting
+If you want to host multiple sites on one domain (e.g., `www.proxitech.com.au/blog`), you'll need to:
 
-### "You are using Node.js X" error
-You need to upgrade Node.js to version 20 or higher. See the upgrade instructions above.
-
-### Dependencies won't install
-Run with `--legacy-peer-deps` flag:
-```bash
-npm install --legacy-peer-deps
-```
-
-### Build fails
-Check the error messages and ensure:
-- Node.js version is 20+
-- All dependencies are installed
-- No TypeScript errors (if possible, fix them)
-
-## Customisation
-
-### Changing the base path
-
-If deploying to a subdirectory, edit `next.config.mjs`:
-
+1. Update `next.config.mjs`:
 ```javascript
-basePath: '/proxitech-website',
-assetPrefix: '/proxitech-website',
+basePath: '/blog',
+assetPrefix: '/blog',
 ```
 
-### Removing type ignore
-To fix TypeScript errors instead of ignoring them, remove `ignoreBuildErrors: true` from `next.config.mjs`.
+2. Update `public/CNAME` (it will be created by GitHub)
+
+### Analytics and Tracking
+
+Add your analytics tracking code to `app/layout.tsx` in the `<head>` section.
+
+## Support
+
+- GitHub Pages Documentation: https://docs.github.com/en/pages
+- Next.js Static Export: https://nextjs.org/docs/advanced-features/static-html-export
+- DNS Issues: Contact your domain registrar support
+
+## Summary
+
+✅ Code is configured for static export  
+✅ GitHub Actions workflow ready  
+✅ CNAME file created for custom domain  
+✅ Ready to push to GitHub and configure DNS  
+
+**Next Steps:**
+1. Push code to GitHub
+2. Enable GitHub Pages
+3. Configure DNS records
+4. Add custom domain in GitHub
+5. Wait for HTTPS certificate
+6. Enjoy your live site! 🚀
