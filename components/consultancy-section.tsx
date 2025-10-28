@@ -1,4 +1,5 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Section, SectionHeader, SectionTitle, SectionDescription } from "@/components/ui/section"
+import { ThemedCard, ThemedCardHeader, ThemedCardTitle, ThemedCardDescription, ThemedCardContent } from "@/components/ui/themed-card"
 import { Button } from "@/components/ui/button"
 import { Briefcase, Target, Rocket, Users } from "lucide-react"
 
@@ -31,48 +32,45 @@ export function ConsultancySection() {
   ]
 
   return (
-    <section className="py-20 bg-gray-950">
+    <Section variant="primary">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-primary">Engineering Consultancy</h2>
-          <p className="text-lg text-gray-400 max-w-2xl mx-auto">
+        <SectionHeader>
+          <SectionTitle>Engineering Consultancy</SectionTitle>
+          <SectionDescription>
             Expert guidance for your robotics and automation projects from concept to deployment
-          </p>
-        </div>
+          </SectionDescription>
+        </SectionHeader>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
           {services.map((service, index) => (
-            <Card
-              key={index}
-              className="group hover:shadow-lg hover:shadow-primary/20 transition-all border-gray-700 bg-gray-900"
-            >
-              <CardHeader>
-                <div className="mb-2 inline-flex p-3 rounded-lg bg-primary/20 text-primary">
+            <ThemedCard key={index} className="hover:shadow-lg hover:shadow-primary/20 transition-all">
+              <ThemedCardHeader>
+                <div className="mb-2 inline-flex p-3 rounded-lg bg-purple-primary/20 text-purple-primary">
                   <service.icon className="h-6 w-6" />
                 </div>
-                <CardTitle className="text-lg text-primary">{service.title}</CardTitle>
-                <CardDescription className="text-gray-400">{service.description}</CardDescription>
-              </CardHeader>
-              <CardContent>
+                <ThemedCardTitle className="text-lg">{service.title}</ThemedCardTitle>
+                <ThemedCardDescription className="text-muted">{service.description}</ThemedCardDescription>
+              </ThemedCardHeader>
+              <ThemedCardContent>
                 <ul className="space-y-2">
                   {service.features.map((feature, idx) => (
-                    <li key={idx} className="text-sm text-gray-400 flex items-center gap-2">
-                      <div className="h-1.5 w-1.5 rounded-full bg-primary" />
+                    <li key={idx} className="text-sm text-muted flex items-center gap-2">
+                      <div className="h-1.5 w-1.5 rounded-full bg-purple-primary" />
                       {feature}
                     </li>
                   ))}
                 </ul>
-              </CardContent>
-            </Card>
+              </ThemedCardContent>
+            </ThemedCard>
           ))}
         </div>
 
         <div className="text-center">
-          <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground">
+          <Button size="lg" variant="purple-solid">
             Schedule a Consultation
           </Button>
         </div>
       </div>
-    </section>
+    </Section>
   )
 }

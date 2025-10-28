@@ -1,4 +1,5 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Section, SectionHeader, SectionTitle, SectionDescription } from "@/components/ui/section"
+import { ThemedCard, ThemedCardHeader, ThemedCardTitle, ThemedCardDescription, ThemedCardContent } from "@/components/ui/themed-card"
 import { Cpu, Bot, Zap, Cog } from "lucide-react"
 
 export function EngineeringProjects() {
@@ -30,39 +31,36 @@ export function EngineeringProjects() {
   ]
 
   return (
-    <section className="py-20 bg-gray-900">
+    <Section variant="secondary">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-primary">Engineering Projects</h2>
-          <p className="text-lg text-gray-400 max-w-2xl mx-auto">
+        <SectionHeader>
+          <SectionTitle>Engineering Projects</SectionTitle>
+          <SectionDescription>
             Innovative solutions at the intersection of robotics, AI, and automation
-          </p>
-        </div>
+          </SectionDescription>
+        </SectionHeader>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {projects.map((project, index) => (
-            <Card
-              key={index}
-              className="group hover:shadow-lg hover:shadow-primary/20 transition-shadow bg-gray-800 border-gray-700"
-            >
-              <CardHeader>
-                <div className="mb-2 inline-flex p-3 rounded-lg bg-primary/20 text-primary">
+            <ThemedCard key={index} className="hover:shadow-lg hover:shadow-primary/20 transition-shadow">
+              <ThemedCardHeader>
+                <div className="mb-2 inline-flex p-3 rounded-lg bg-purple-primary/20 text-purple-primary">
                   <project.icon className="h-6 w-6" />
                 </div>
-                <CardTitle className="text-lg text-primary">{project.title}</CardTitle>
-                <CardDescription className="text-xs">
-                  <span className="inline-flex items-center px-2 py-1 rounded-full bg-primary/30 text-primary font-medium">
+                <ThemedCardTitle className="text-lg">{project.title}</ThemedCardTitle>
+                <ThemedCardDescription className="text-xs">
+                  <span className="inline-flex items-center px-2 py-1 rounded-full bg-purple-primary/30 text-purple-primary font-medium">
                     {project.status}
                   </span>
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-gray-400">{project.description}</p>
-              </CardContent>
-            </Card>
+                </ThemedCardDescription>
+              </ThemedCardHeader>
+              <ThemedCardContent>
+                <p className="text-sm text-muted">{project.description}</p>
+              </ThemedCardContent>
+            </ThemedCard>
           ))}
         </div>
       </div>
-    </section>
+    </Section>
   )
 }

@@ -1,7 +1,7 @@
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
 import { Button } from "@/components/ui/button"
-import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { ThemedCard, ThemedCardHeader, ThemedCardTitle, ThemedCardDescription } from "@/components/ui/themed-card"
 import { Bot, Cpu, Zap, Cog, ArrowRight } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
@@ -32,29 +32,29 @@ export default function EngineeringPage() {
   ]
 
   return (
-    <div className="bg-gray-950 text-gray-100 min-h-screen">
+    <div className="bg-gray-950 text-heading min-h-screen">
       <Navbar mode="engineering" />
       <main>
         {/* Hero Section */}
-        <section className="pt-32 pb-20 bg-gradient-to-b from-primary/20 to-gray-950">
+        <section className="pt-32 pb-20 bg-gradient-to-b from-purple-primary/20 to-gray-950">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto text-center">
               <Image
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ProxiTech%20Engineering%20Dark-emMZJBW5kmtkg6HoechOs4pVTPo2rk.png"
+                src="/images/branding/proxitech-engineering-dark.png"
                 alt="ProxiTech Engineering"
                 width={400}
                 height={100}
                 className="h-20 w-auto mx-auto mb-8"
               />
-              <h1 className="text-4xl md:text-5xl font-bold mb-6 text-balance text-primary">
+              <h1 className="text-4xl md:text-5xl font-bold mb-6 text-balance text-white">
                 Engineering the Future of Automation
               </h1>
-              <p className="text-lg text-gray-400 mb-8 text-pretty">
+              <p className="text-lg text-gray-300 mb-8 text-pretty">
                 We develop cutting-edge robotics systems, AI solutions, and smart automation technologies that drive
                 innovation and efficiency across industries.
               </p>
               <Link href="/#contact">
-                <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground">
+                <Button size="lg" variant="purple-solid">
                   Start a Project
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
@@ -67,26 +67,24 @@ export default function EngineeringPage() {
         <section className="py-20 bg-gray-950">
           <div className="container mx-auto px-4">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-primary">Our Services</h2>
-              <p className="text-lg text-gray-400 max-w-2xl mx-auto">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">Our Services</h2>
+              <p className="text-lg text-gray-300 max-w-2xl mx-auto">
                 Comprehensive engineering solutions from concept to deployment
               </p>
             </div>
 
             <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
               {services.map((service, index) => (
-                <Card
+                <div
                   key={index}
-                  className="bg-gray-900 border-gray-800 hover:border-primary transition-all hover:shadow-lg hover:shadow-primary/20"
+                  className="bg-gray-800 border border-gray-700 rounded-lg p-6 hover:shadow-lg hover:shadow-primary/20 transition-all"
                 >
-                  <CardHeader>
-                    <div className="mb-4 inline-flex p-3 rounded-lg bg-primary/20 text-primary">
-                      <service.icon className="h-6 w-6" />
-                    </div>
-                    <CardTitle className="text-primary">{service.title}</CardTitle>
-                    <CardDescription className="text-gray-400">{service.description}</CardDescription>
-                  </CardHeader>
-                </Card>
+                  <div className="mb-4 inline-flex p-3 rounded-lg bg-purple-primary/20 text-purple-primary">
+                    <service.icon className="h-6 w-6" />
+                  </div>
+                  <h3 className="text-xl font-bold text-white mb-2">{service.title}</h3>
+                  <p className="text-gray-300">{service.description}</p>
+                </div>
               ))}
             </div>
           </div>
@@ -96,8 +94,8 @@ export default function EngineeringPage() {
         <section className="py-20 bg-gray-950">
           <div className="container mx-auto px-4">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-primary">Our Process</h2>
-              <p className="text-lg text-gray-400 max-w-2xl mx-auto">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">Our Process</h2>
+              <p className="text-lg text-gray-300 max-w-2xl mx-auto">
                 From initial consultation to final deployment, we work closely with you every step of the way
               </p>
             </div>
@@ -110,9 +108,9 @@ export default function EngineeringPage() {
                 { step: "04", title: "Deployment", description: "Implementation and ongoing support" },
               ].map((phase, index) => (
                 <div key={index} className="text-center">
-                  <div className="text-4xl font-bold text-primary/30 mb-4">{phase.step}</div>
-                  <h3 className="font-semibold mb-2 text-primary">{phase.title}</h3>
-                  <p className="text-sm text-gray-400">{phase.description}</p>
+                  <div className="text-4xl font-bold text-purple-primary mb-4">{phase.step}</div>
+                  <h3 className="font-semibold mb-2 text-white">{phase.title}</h3>
+                  <p className="text-sm text-gray-300">{phase.description}</p>
                 </div>
               ))}
             </div>
@@ -120,14 +118,14 @@ export default function EngineeringPage() {
         </section>
 
         {/* CTA Section */}
-        <section className="py-20 bg-primary/10">
+        <section className="py-20 bg-purple-primary/10">
           <div className="container mx-auto px-4 text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-primary">Let's Build Something Amazing</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">Let's Build Something Amazing</h2>
             <p className="text-lg mb-8 max-w-2xl mx-auto text-gray-300">
               Partner with ProxiTech to bring your engineering vision to life.
             </p>
             <Link href="/#contact">
-              <Button size="lg" className="bg-white text-primary hover:bg-gray-100 font-semibold text-lg px-8 py-6">
+              <Button size="lg" variant="purple-solid" className="font-semibold text-lg px-8 py-6">
                 Get in Touch
               </Button>
             </Link>

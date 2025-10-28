@@ -1,4 +1,5 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Section, SectionHeader, SectionTitle, SectionDescription } from "@/components/ui/section"
+import { ThemedCard, ThemedCardHeader, ThemedCardTitle, ThemedCardDescription, ThemedCardContent } from "@/components/ui/themed-card"
 import { Button } from "@/components/ui/button"
 import { ArrowRight, Calendar } from "lucide-react"
 import Link from "next/link"
@@ -26,21 +27,18 @@ export function BlogHighlights() {
   ]
 
   return (
-    <section className="py-20 bg-gray-950">
+    <Section variant="primary">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-primary">Latest from Our Blog</h2>
-          <p className="text-lg text-gray-400 max-w-2xl mx-auto">
+        <SectionHeader>
+          <SectionTitle>Latest from Our Blog</SectionTitle>
+          <SectionDescription>
             Insights, tutorials, and updates from the world of robotics and AI
-          </p>
-        </div>
+          </SectionDescription>
+        </SectionHeader>
 
         <div className="grid md:grid-cols-3 gap-8 mb-8">
           {posts.map((post, index) => (
-            <Card
-              key={index}
-              className="group hover:shadow-lg hover:shadow-primary/20 transition-shadow overflow-hidden border-gray-700 bg-gray-900"
-            >
+            <ThemedCard key={index} className="hover:shadow-lg hover:shadow-primary/20 transition-shadow overflow-hidden">
               <div className="aspect-video overflow-hidden">
                 <img
                   src={post.image || "/placeholder.svg"}
@@ -48,38 +46,34 @@ export function BlogHighlights() {
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                 />
               </div>
-              <CardHeader>
+              <ThemedCardHeader>
                 <div className="flex items-center gap-2 text-xs text-gray-500 mb-2">
                   <Calendar className="h-3 w-3" />
                   {new Date(post.date).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })}
                 </div>
-                <CardTitle className="text-lg group-hover:text-primary/80 transition-colors text-primary">
+                <ThemedCardTitle className="text-lg group-hover:text-purple-primary/80 transition-colors">
                   {post.title}
-                </CardTitle>
-                <CardDescription className="text-gray-400">{post.excerpt}</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <Button variant="ghost" className="group/btn p-0 h-auto text-primary hover:text-primary/80">
+                </ThemedCardTitle>
+                <ThemedCardDescription>{post.excerpt}</ThemedCardDescription>
+              </ThemedCardHeader>
+              <ThemedCardContent>
+                <Button variant="purple-ghost" className="group/btn p-0 h-auto">
                   Read More
                   <ArrowRight className="ml-2 h-4 w-4 group-hover/btn:translate-x-1 transition-transform" />
                 </Button>
-              </CardContent>
-            </Card>
+              </ThemedCardContent>
+            </ThemedCard>
           ))}
         </div>
 
         <div className="text-center">
           <Link href="/blog">
-            <Button
-              variant="outline"
-              size="lg"
-              className="border-gray-700 text-primary hover:bg-gray-800 hover:text-primary/80 bg-transparent"
-            >
+            <Button variant="purple-outline" size="lg">
               View All Posts
             </Button>
           </Link>
         </div>
       </div>
-    </section>
+    </Section>
   )
 }

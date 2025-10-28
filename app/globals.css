@@ -17,10 +17,10 @@
   --popover-foreground: oklch(0.15 0.02 300);
 
   /* Primary purple: #641E7C - Standard brand colour */
-  --primary: 300 85% 19%;
-  --primary-foreground: 0 0% 100%;
-  --primary-hover: 300 70% 25%; /* #7D2A9C */
-  --primary-active: 300 90% 15%; /* #4B1459 */
+  --primary: rgb(100, 30, 124);
+  --primary-foreground: rgb(255, 255, 255);
+  --primary-hover: rgb(115, 35, 142);
+  --primary-active: rgb(85, 25, 106);
 
   /* UI Components */
   --secondary: oklch(0.97 0.02 300);
@@ -37,14 +37,14 @@
   /* Borders and inputs */
   --border: oklch(0.9 0.01 300);
   --input: oklch(0.9 0.01 300);
-  --ring: 300 85% 19%;
+  --ring: rgb(100, 30, 124);
 
   /* Chart colours for data visualisation */
-  --chart-1: 300 85% 19%;
-  --chart-2: 300 70% 30%;
-  --chart-3: 300 60% 45%;
-  --chart-4: 300 50% 55%;
-  --chart-5: 300 40% 65%;
+  --chart-1: rgb(100, 30, 124);
+  --chart-2: rgb(110, 40, 134);
+  --chart-3: rgb(120, 50, 144);
+  --chart-4: rgb(130, 60, 154);
+  --chart-5: rgb(140, 70, 164);
 
   /* Component settings */
   --radius: 0.625rem;
@@ -69,11 +69,11 @@
   --popover: oklch(0.15 0.02 300);
   --popover-foreground: oklch(0.98 0.005 300);
 
-  /* Primary purple: #9D4EDD - Lightened for accessibility on dark */
-  --primary: 300 60% 70%;
-  --primary-foreground: oklch(0.12 0.02 300);
-  --primary-hover: 300 55% 75%; /* #B87FE7 */
-  --primary-active: 300 65% 65%; /* #7D2A9C */
+  /* Primary purple: #641E7C - Same brand colour for consistency */
+  --primary: rgb(100, 30, 124);
+  --primary-foreground: rgb(255, 255, 255);
+  --primary-hover: rgb(115, 35, 142);
+  --primary-active: rgb(85, 25, 106);
 
   /* UI Components */
   --secondary: oklch(0.25 0.05 300);
@@ -90,14 +90,14 @@
   /* Borders and inputs */
   --border: oklch(0.25 0.05 300);
   --input: oklch(0.25 0.05 300);
-  --ring: 300 60% 70%;
+  --ring: rgb(100, 30, 124);
 
   /* Chart colours optimised for dark backgrounds */
-  --chart-1: 300 60% 70%;
-  --chart-2: 300 55% 75%;
-  --chart-3: 300 50% 80%;
-  --chart-4: 300 45% 70%;
-  --chart-5: 300 65% 65%;
+  --chart-1: rgb(100, 30, 124);
+  --chart-2: rgb(110, 40, 134);
+  --chart-3: rgb(120, 50, 144);
+  --chart-4: rgb(130, 60, 154);
+  --chart-5: rgb(140, 70, 164);
 
   /* Component settings */
   --radius: 0.625rem;
@@ -168,41 +168,134 @@
    ============================================================================ */
 
 @layer utilities {
-  /* Button variants using brand colours */
-  .btn-primary {
-    background-color: hsl(var(--primary));
-    color: hsl(var(--primary-foreground));
+  /* ============================================================================
+     Text Hierarchy - Automatic theme adaptation
+     ============================================================================ */
+  
+  .text-heading {
+    @apply text-gray-900 dark:text-white;
   }
   
-  .btn-primary:hover {
-    background-color: hsl(var(--primary-hover));
+  .text-subheading {
+    @apply text-gray-600 dark:text-gray-300;
   }
   
-  .btn-primary:active {
-    background-color: hsl(var(--primary-active));
+  .text-body {
+    @apply text-gray-600 dark:text-gray-200;
   }
   
-  /* Border utilities */
-  .border-purple-primary {
-    border-color: hsl(var(--primary));
+  .text-muted {
+    @apply text-gray-400;
   }
   
-  /* Text utilities */
+  /* ============================================================================
+     Section Backgrounds
+     ============================================================================ */
+  
+  .bg-section-primary {
+    @apply bg-white dark:bg-gray-950;
+  }
+  
+  .bg-section-secondary {
+    @apply bg-gray-50 dark:bg-gray-900;
+  }
+  
+  /* ============================================================================
+     Card Backgrounds & Borders
+     ============================================================================ */
+  
+  .bg-card-themed {
+    @apply bg-white dark:bg-gray-800;
+  }
+  
+  .border-card-themed {
+    @apply border-gray-200 dark:border-gray-700;
+  }
+  
+  /* ============================================================================
+     Purple Color Utilities
+     ============================================================================ */
+  
   .text-purple-primary {
-    color: hsl(var(--primary));
+    color: var(--primary);
   }
   
-  /* Background utilities */
   .bg-purple-primary {
-    background-color: hsl(var(--primary));
+    background-color: var(--primary);
   }
   
   .bg-purple-primary\/10 {
-    background-color: hsl(var(--primary) / 0.1);
+    background-color: color-mix(in srgb, var(--primary) 10%, transparent);
   }
   
   .bg-purple-primary\/20 {
-    background-color: hsl(var(--primary) / 0.2);
+    background-color: color-mix(in srgb, var(--primary) 20%, transparent);
+  }
+  
+  .border-purple-primary {
+    border-color: var(--primary);
+  }
+  
+  /* ============================================================================
+     Button Utility Classes
+     ============================================================================ */
+  
+  .btn-purple-solid {
+    background-color: var(--primary);
+    color: var(--primary-foreground);
+    border: none;
+  }
+  
+  .btn-purple-solid:hover {
+    background-color: var(--primary-hover);
+  }
+  
+  .btn-purple-solid:active {
+    background-color: var(--primary-active);
+  }
+  
+  .btn-purple-outline {
+    background-color: color-mix(in srgb, var(--primary) 20%, transparent);
+    color: var(--primary);
+    border: 2px solid var(--primary);
+  }
+  
+  .btn-purple-outline:hover {
+    background-color: color-mix(in srgb, var(--primary) 30%, transparent);
+  }
+  
+  .dark .btn-purple-outline {
+    color: white;
+  }
+  
+  .btn-purple-ghost {
+    background-color: transparent;
+    color: var(--primary);
+    border: none;
+  }
+  
+  .btn-purple-ghost:hover {
+    background-color: color-mix(in srgb, var(--primary) 10%, transparent);
+  }
+  
+  /* Purple text utility */
+  .text-purple {
+    color: var(--primary);
+  }
+  
+  /* Input field theming */
+  .input-themed {
+    background-color: var(--card);
+    border-color: var(--border);
+    color: var(--foreground);
+  }
+  
+  .input-themed::placeholder {
+    color: var(--muted-foreground);
+  }
+  
+  .label-themed {
+    color: var(--foreground);
   }
 }
 

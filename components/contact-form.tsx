@@ -3,7 +3,7 @@
 import type React from "react"
 
 import { useState } from "react"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { ThemedCard, ThemedCardHeader, ThemedCardTitle, ThemedCardDescription, ThemedCardContent } from "@/components/ui/themed-card"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
@@ -40,20 +40,20 @@ export function ContactForm({ mode }: ContactFormProps) {
   }
 
   return (
-    <section id="contact" className={`py-20 ${mode === "engineering" ? "bg-gray-900" : "bg-gray-50"}`}>
+    <section id="contact" className="py-20 bg-section-secondary">
       <div className="container mx-auto px-4">
         <div className="max-w-2xl mx-auto">
-          <Card className={mode === "engineering" ? "bg-gray-800 border-gray-700" : ""}>
-            <CardHeader className="text-center">
-              <CardTitle className="text-3xl text-primary">Let's Collaborate</CardTitle>
-              <CardDescription className={mode === "engineering" ? "text-gray-400" : ""}>
+          <ThemedCard mode={mode}>
+            <ThemedCardHeader className="text-center">
+              <ThemedCardTitle className="text-3xl">Let's Collaborate</ThemedCardTitle>
+              <ThemedCardDescription>
                 Have a question or want to work together? We'd love to hear from you.
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
+              </ThemedCardDescription>
+            </ThemedCardHeader>
+            <ThemedCardContent>
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="space-y-2">
-                  <Label htmlFor="name" className={mode === "engineering" ? "text-gray-300" : ""}>
+                  <Label htmlFor="name" className="label-themed">
                     Name
                   </Label>
                   <Input
@@ -62,16 +62,12 @@ export function ContactForm({ mode }: ContactFormProps) {
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     required
-                    className={
-                      mode === "engineering"
-                        ? "bg-gray-800 border-gray-700 text-gray-100 placeholder:text-gray-500"
-                        : ""
-                    }
+                    className="input-themed"
                   />
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="email" className={mode === "engineering" ? "text-gray-300" : ""}>
+                  <Label htmlFor="email" className="label-themed">
                     Email
                   </Label>
                   <Input
@@ -81,16 +77,12 @@ export function ContactForm({ mode }: ContactFormProps) {
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     required
-                    className={
-                      mode === "engineering"
-                        ? "bg-gray-800 border-gray-700 text-gray-100 placeholder:text-gray-500"
-                        : ""
-                    }
+                    className="input-themed"
                   />
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="message" className={mode === "engineering" ? "text-gray-300" : ""}>
+                  <Label htmlFor="message" className="label-themed">
                     Message
                   </Label>
                   <Textarea
@@ -100,24 +92,21 @@ export function ContactForm({ mode }: ContactFormProps) {
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     required
-                    className={
-                      mode === "engineering"
-                        ? "bg-gray-800 border-gray-700 text-gray-100 placeholder:text-gray-500"
-                        : ""
-                    }
+                    className="input-themed"
                   />
                 </div>
 
                 <Button
                   type="submit"
-                  className="w-full bg-primary hover:bg-primary/90 text-primary-foreground"
+                  variant="purple-solid"
+                  className="w-full"
                   disabled={isSubmitting}
                 >
                   {isSubmitting ? "Sending..." : "Send Message"}
                 </Button>
               </form>
-            </CardContent>
-          </Card>
+            </ThemedCardContent>
+          </ThemedCard>
         </div>
       </div>
     </section>
