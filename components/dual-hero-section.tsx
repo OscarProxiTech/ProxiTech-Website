@@ -39,7 +39,7 @@ export function DualHeroSection({ mode, setMode }: DualHeroSectionProps) {
       )}
     >
       {mode === "engineering" && (
-        <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute inset-0 pointer-events-none" style={{ transform: 'translateZ(0)', willChange: 'contents' }}>
           {[...Array(80)].map((_, i) => (
             <div
               key={i}

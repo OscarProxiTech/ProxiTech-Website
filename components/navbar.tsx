@@ -31,7 +31,7 @@ export function Navbar({ mode, setMode }: NavbarProps) {
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
         scrolled
           ? mode === "engineering"
-            ? "bg-gray-950/80 backdrop-blur-md border-b border-gray-800 shadow-sm"
+            ? "bg-gray-950/80 backdrop-blur-md"
             : "bg-white/80 backdrop-blur-md border-b border-gray-200 shadow-sm"
           : "bg-transparent",
       )}
