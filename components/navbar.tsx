@@ -174,7 +174,7 @@ export function Navbar({ mode, setMode }: NavbarProps) {
         {mobileMenuOpen && (
           <div
             className={cn(
-              "md:hidden py-4",
+              "md:hidden py-6 min-h-[80vh]",
               mode === "engineering" 
                 ? scrolled 
                   ? "bg-gray-950/80 border-t border-gray-800" 
@@ -187,7 +187,7 @@ export function Navbar({ mode, setMode }: NavbarProps) {
             <Link
               href="/"
               className={cn(
-                "block py-2 pl-4 text-sm font-medium transition-colors",
+                "block py-4 pl-6 text-lg font-medium transition-colors",
                 mode === "engineering" ? "text-gray-300 hover:text-white" : "text-gray-700 hover:text-gray-900",
               )}
               onClick={() => setMobileMenuOpen(false)}
@@ -195,15 +195,17 @@ export function Navbar({ mode, setMode }: NavbarProps) {
               Home
             </Link>
             <div className="py-2">
-              <div
-                className={cn("text-sm font-medium mb-2 pl-4", mode === "engineering" ? "text-gray-300" : "text-gray-700")}
+              <Link
+                href="/education"
+                className={cn("text-lg font-semibold mb-3 pl-6 block", mode === "engineering" ? "text-gray-300 hover:text-white" : "text-gray-700 hover:text-gray-900")}
+                onClick={() => setMobileMenuOpen(false)}
               >
                 Education
-              </div>
+              </Link>
               <Link
                 href="/education"
                 className={cn(
-                  "block py-1 pl-4 text-sm transition-colors",
+                  "block py-3 pl-8 text-base transition-colors",
                   mode === "engineering" ? "text-gray-400 hover:text-white" : "text-gray-600 hover:text-gray-900",
                 )}
                 onClick={() => setMobileMenuOpen(false)}
@@ -213,7 +215,7 @@ export function Navbar({ mode, setMode }: NavbarProps) {
               <Link
                 href="/education/gallery"
                 className={cn(
-                  "block py-1 pl-4 text-sm transition-colors",
+                  "block py-3 pl-8 text-base transition-colors",
                   mode === "engineering" ? "text-gray-400 hover:text-white" : "text-gray-600 hover:text-gray-900",
                 )}
                 onClick={() => setMobileMenuOpen(false)}
@@ -222,15 +224,17 @@ export function Navbar({ mode, setMode }: NavbarProps) {
               </Link>
             </div>
             <div className="py-2">
-              <div
-                className={cn("text-sm font-medium mb-2 pl-4", mode === "engineering" ? "text-gray-300" : "text-gray-700")}
+              <Link
+                href="/engineering"
+                className={cn("text-lg font-semibold mb-3 pl-6 block", mode === "engineering" ? "text-gray-300 hover:text-white" : "text-gray-700 hover:text-gray-900")}
+                onClick={() => setMobileMenuOpen(false)}
               >
                 Engineering
-              </div>
+              </Link>
               <Link
                 href="/engineering"
                 className={cn(
-                  "block py-1 pl-4 text-sm transition-colors",
+                  "block py-3 pl-8 text-base transition-colors",
                   mode === "engineering" ? "text-gray-400 hover:text-white" : "text-gray-600 hover:text-gray-900",
                 )}
                 onClick={() => setMobileMenuOpen(false)}
@@ -240,7 +244,7 @@ export function Navbar({ mode, setMode }: NavbarProps) {
               <Link
                 href="/blog"
                 className={cn(
-                  "block py-1 pl-4 text-sm transition-colors",
+                  "block py-3 pl-8 text-base transition-colors",
                   mode === "engineering" ? "text-gray-400 hover:text-white" : "text-gray-600 hover:text-gray-900",
                 )}
                 onClick={() => setMobileMenuOpen(false)}
@@ -251,7 +255,7 @@ export function Navbar({ mode, setMode }: NavbarProps) {
             <Link
               href="/about"
               className={cn(
-                "block py-2 pl-4 text-sm font-medium transition-colors",
+                "block py-4 pl-6 text-lg font-medium transition-colors",
                 mode === "engineering" ? "text-gray-300 hover:text-white" : "text-gray-700 hover:text-gray-900",
               )}
               onClick={() => setMobileMenuOpen(false)}
@@ -261,7 +265,7 @@ export function Navbar({ mode, setMode }: NavbarProps) {
             <Link
               href="/contact"
               className={cn(
-                "block py-2 pl-4 text-sm font-medium transition-colors",
+                "block py-4 pl-6 text-lg font-medium transition-colors",
                 mode === "engineering" ? "text-gray-300 hover:text-white" : "text-gray-700 hover:text-gray-900",
               )}
               onClick={() => setMobileMenuOpen(false)}

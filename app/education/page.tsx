@@ -43,18 +43,11 @@ export default function EducationPage() {
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto text-center">
               <Image
-                src="/images/design-mode/ProxiTech%20Education.png"
+                src="/images/branding/proxitech-education.png"
                 alt="ProxiTech Education"
                 width={400}
                 height={100}
-                className="h-20 w-auto mx-auto mb-8 dark:hidden"
-              />
-              <Image
-                src="/images/design-mode/ProxiTech%20Education%20Dark.png"
-                alt="ProxiTech Education"
-                width={400}
-                height={100}
-                className="h-20 w-auto mx-auto mb-8 hidden dark:block"
+                className="h-20 w-auto mx-auto mb-8"
               />
               <h1 className="text-4xl md:text-5xl font-bold mb-6 text-balance">
                 Inspiring the Next Generation of Innovators

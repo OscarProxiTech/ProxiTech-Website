@@ -35,7 +35,7 @@ export function DualHeroSection({ mode, setMode }: DualHeroSectionProps) {
   return (
     <section
       className={cn(
-        "relative min-h-screen flex items-center justify-center overflow-hidden pt-16 transition-colors duration-500 bg-section-primary",
+        "relative min-h-screen flex items-center justify-center overflow-hidden pt-16 md:pt-20 transition-colors duration-500 bg-section-primary",
       )}
     >
       {mode === "engineering" && (
