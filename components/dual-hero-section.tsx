@@ -15,6 +15,7 @@ interface DualHeroSectionProps {
 export function DualHeroSection({ mode, setMode }: DualHeroSectionProps) {
   const [mounted, setMounted] = useState(false)
   const [isTransitioning, setIsTransitioning] = useState(false)
+  const [animationKey, setAnimationKey] = useState(0)
 
   useEffect(() => {
     setMounted(true)
@@ -23,9 +24,10 @@ export function DualHeroSection({ mode, setMode }: DualHeroSectionProps) {
   const handleModeSwitch = (newMode: "education" | "engineering") => {
     if (newMode !== mode) {
       setIsTransitioning(true)
+      setAnimationKey(prev => prev + 1)
       setTimeout(() => {
         setMode(newMode)
-        setIsTransitioning(false)
+        setTimeout(() => setIsTransitioning(false), 50)
       }, 300)
     }
   }
@@ -38,7 +40,7 @@ export function DualHeroSection({ mode, setMode }: DualHeroSectionProps) {
     >
       {mode === "engineering" && (
         <div className="absolute inset-0 pointer-events-none">
-          {[...Array(20)].map((_, i) => (
+          {[...Array(80)].map((_, i) => (
             <div
               key={i}
               className="particle"
@@ -76,10 +78,10 @@ export function DualHeroSection({ mode, setMode }: DualHeroSectionProps) {
         </div>
 
         <div
+          key={`image-${animationKey}`}
           className={cn(
             "mb-8 flex justify-center transition-all duration-500",
-            mounted && !isTransitioning ? "animate-fade-in-scale" : "opacity-0",
-            isTransitioning && "translate-x-full opacity-0",
+            mounted && !isTransitioning ? (mode === "education" ? "animate-slide-in-left" : "animate-slide-in-right") : "opacity-0",
           )}
         >
           <Image
@@ -97,22 +99,21 @@ export function DualHeroSection({ mode, setMode }: DualHeroSectionProps) {
         </div>
 
         <h1
+          key={`title-${animationKey}`}
           className={cn(
             "text-4xl md:text-6xl lg:text-7xl font-bold mb-6 text-balance transition-all duration-500 text-heading",
-            mounted && !isTransitioning ? "animate-fade-in-up animation-delay-500" : "opacity-0",
-            isTransitioning && "translate-x-full opacity-0",
+            mounted && !isTransitioning ? (mode === "education" ? "animate-slide-in-left animation-delay-500" : "animate-slide-in-right animation-delay-500") : "opacity-0",
           )}
         >
           {mode === "education" ? "Empowering Robotics and AI Education" : "Engineering Development & Innovation"}
         </h1>
 
         <p
+          key={`description-${animationKey}`}
           className={cn(
             "text-lg md:text-xl max-w-3xl mx-auto mb-8 text-pretty transition-all duration-500 text-subheading",
-            mounted && !isTransitioning ? "animate-fade-in-up animation-delay-500" : "opacity-0",
-            isTransitioning && "translate-x-full opacity-0",
+            mounted && !isTransitioning ? (mode === "education" ? "animate-slide-in-left animation-delay-700" : "animate-slide-in-right animation-delay-700") : "opacity-0",
           )}
-          style={{ animationDelay: "0.7s" }}
         >
           {mode === "education"
             ? "ProxiTech bridges technology and learning — bringing robotics, AI, and engineering innovation to classrooms and industries."
@@ -120,12 +121,11 @@ export function DualHeroSection({ mode, setMode }: DualHeroSectionProps) {
         </p>
 
         <div
+          key={`buttons-${animationKey}`}
           className={cn(
             "flex gap-4 justify-center transition-all duration-500",
-            mounted && !isTransitioning ? "animate-fade-in-up animation-delay-500" : "opacity-0",
-            isTransitioning && "translate-x-full opacity-0",
+            mounted && !isTransitioning ? (mode === "education" ? "animate-slide-in-left animation-delay-900" : "animate-slide-in-right animation-delay-900") : "opacity-0",
           )}
-          style={{ animationDelay: "0.9s" }}
         >
           <Link href={mode === "education" ? "/education" : "/engineering"}>
             <Button size="lg" variant="purple-solid" className="group">

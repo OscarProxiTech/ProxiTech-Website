@@ -155,19 +155,6 @@ export function Navbar({ mode, setMode }: NavbarProps) {
             >
               Contact
             </Link>
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={() => setMode?.(mode === "education" ? "engineering" : "education")}
-              className={cn(
-                "ml-2",
-                mode === "engineering"
-                  ? "border-purple-primary text-purple-300 hover:bg-purple-primary/10"
-                  : "border-purple-primary text-purple-primary hover:bg-purple-primary/10",
-              )}
-            >
-              {mode === "education" ? "Engineering" : "Education"}
-            </Button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -272,22 +259,6 @@ export function Navbar({ mode, setMode }: NavbarProps) {
             >
               Contact
             </Link>
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={() => {
-                setMode?.(mode === "education" ? "engineering" : "education")
-                setMobileMenuOpen(false)
-              }}
-              className={cn(
-                "mt-2 w-full",
-                mode === "engineering"
-                  ? "border-purple-primary text-purple-300 hover:bg-purple-primary/10"
-                  : "border-purple-primary text-purple-primary hover:bg-purple-primary/10",
-              )}
-            >
-              Switch to {mode === "education" ? "Engineering" : "Education"}
-            </Button>
           </div>
         )}
       </div>
