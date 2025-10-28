@@ -173,12 +173,21 @@ export function Navbar({ mode, setMode }: NavbarProps) {
         {/* Mobile Menu */}
         {mobileMenuOpen && (
           <div
-            className={cn("md:hidden py-4 border-t", mode === "engineering" ? "border-gray-800" : "border-gray-200")}
+            className={cn(
+              "md:hidden py-4",
+              mode === "engineering" 
+                ? scrolled 
+                  ? "bg-gray-950/80 border-t border-gray-800" 
+                  : "bg-gray-950"
+                : scrolled
+                  ? "bg-white/80 border-t border-gray-200"
+                  : "bg-white"
+            )}
           >
             <Link
               href="/"
               className={cn(
-                "block py-2 text-sm font-medium transition-colors",
+                "block py-2 pl-4 text-sm font-medium transition-colors",
                 mode === "engineering" ? "text-gray-300 hover:text-white" : "text-gray-700 hover:text-gray-900",
               )}
               onClick={() => setMobileMenuOpen(false)}
@@ -187,7 +196,7 @@ export function Navbar({ mode, setMode }: NavbarProps) {
             </Link>
             <div className="py-2">
               <div
-                className={cn("text-sm font-medium mb-2", mode === "engineering" ? "text-gray-300" : "text-gray-700")}
+                className={cn("text-sm font-medium mb-2 pl-4", mode === "engineering" ? "text-gray-300" : "text-gray-700")}
               >
                 Education
               </div>
@@ -214,7 +223,7 @@ export function Navbar({ mode, setMode }: NavbarProps) {
             </div>
             <div className="py-2">
               <div
-                className={cn("text-sm font-medium mb-2", mode === "engineering" ? "text-gray-300" : "text-gray-700")}
+                className={cn("text-sm font-medium mb-2 pl-4", mode === "engineering" ? "text-gray-300" : "text-gray-700")}
               >
                 Engineering
               </div>
@@ -242,7 +251,7 @@ export function Navbar({ mode, setMode }: NavbarProps) {
             <Link
               href="/about"
               className={cn(
-                "block py-2 text-sm font-medium transition-colors",
+                "block py-2 pl-4 text-sm font-medium transition-colors",
                 mode === "engineering" ? "text-gray-300 hover:text-white" : "text-gray-700 hover:text-gray-900",
               )}
               onClick={() => setMobileMenuOpen(false)}
@@ -252,7 +261,7 @@ export function Navbar({ mode, setMode }: NavbarProps) {
             <Link
               href="/contact"
               className={cn(
-                "block py-2 text-sm font-medium transition-colors",
+                "block py-2 pl-4 text-sm font-medium transition-colors",
                 mode === "engineering" ? "text-gray-300 hover:text-white" : "text-gray-700 hover:text-gray-900",
               )}
               onClick={() => setMobileMenuOpen(false)}
