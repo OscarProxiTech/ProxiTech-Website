@@ -1,6 +1,6 @@
 import Link from "next/link"
 import Image from "next/image"
-import { Mail, Linkedin, Github, Twitter } from "lucide-react"
+import { Mail, Linkedin, Instagram, Youtube } from "lucide-react"
 import { cn } from "@/lib/utils"
 
 interface FooterProps {
@@ -34,6 +34,17 @@ export function Footer({ mode }: FooterProps) {
               Quick Links
             </h3>
             <ul className="space-y-2">
+              <li>
+                <Link
+                  href="/store"
+                  className={cn(
+                    "text-sm transition-colors",
+                    mode === "engineering" ? "text-gray-400 hover:text-white" : "text-gray-600 hover:text-gray-900",
+                  )}
+                >
+                  Store
+                </Link>
+              </li>
               <li>
                 <Link
                   href="/education"
@@ -86,42 +97,48 @@ export function Footer({ mode }: FooterProps) {
             <h3 className={cn("font-semibold mb-4", mode === "engineering" ? "text-white" : "text-gray-900")}>
               Connect
             </h3>
-            <div className="flex gap-4">
+            <div className="flex gap-6">
               <a
-                href="mailto:info@proxitech.com"
+                href="mailto:oscar@proxitech.com.au"
                 className={cn(
                   "transition-colors",
                   mode === "engineering" ? "text-gray-400 hover:text-white" : "text-gray-600 hover:text-gray-900",
                 )}
               >
-                <Mail className="h-5 w-5" />
+                <Mail className="h-6 w-6" />
               </a>
               <a
-                href="#"
+                href="https://www.linkedin.com/company/proxitechaus"
+                target="_blank"
+                rel="noopener noreferrer"
                 className={cn(
                   "transition-colors",
                   mode === "engineering" ? "text-gray-400 hover:text-white" : "text-gray-600 hover:text-gray-900",
                 )}
               >
-                <Linkedin className="h-5 w-5" />
+                <Linkedin className="h-6 w-6" />
               </a>
               <a
-                href="#"
+                href="https://www.instagram.com/proxitechaus/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className={cn(
                   "transition-colors",
                   mode === "engineering" ? "text-gray-400 hover:text-white" : "text-gray-600 hover:text-gray-900",
                 )}
               >
-                <Github className="h-5 w-5" />
+                <Instagram className="h-6 w-6" />
               </a>
               <a
-                href="#"
+                href="https://www.youtube.com/@OscarProxiTech"
+                target="_blank"
+                rel="noopener noreferrer"
                 className={cn(
                   "transition-colors",
                   mode === "engineering" ? "text-gray-400 hover:text-white" : "text-gray-600 hover:text-gray-900",
                 )}
               >
-                <Twitter className="h-5 w-5" />
+                <Youtube className="h-6 w-6" />
               </a>
             </div>
           </div>

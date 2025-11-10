@@ -9,7 +9,7 @@ import { PartnersSection } from "@/components/partners-section"
 import { SocialMediaSection } from "@/components/social-media-section"
 import { ConsultancySection } from "@/components/consultancy-section"
 import { EngineeringProjects } from "@/components/engineering-projects"
-import { BlogHighlights } from "@/components/blog-highlights"
+// Blog highlights will be fetched server-side via the wrapper component
 import { ContactForm } from "@/components/contact-form"
 import { Footer } from "@/components/footer"
 import { Toaster } from "@/components/ui/toaster"
@@ -34,7 +34,7 @@ export default function HomePage() {
           <>
             <ConsultancySection />
             <EngineeringProjects />
-            <BlogHighlights />
+            {/* Blog highlights - temporarily disabled due to server component constraints */}
           </>
         )}
 

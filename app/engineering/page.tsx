@@ -80,8 +80,8 @@ export default function EngineeringPage() {
                   className="bg-gray-800 border border-gray-700 rounded-lg p-6 hover:shadow-lg hover:shadow-primary/20 transition-all"
                 >
                   <div className="mb-4 inline-flex p-3 rounded-lg bg-purple-primary/20 text-purple-primary">
-                    <service.icon className="h-6 w-6" />
-                  </div>
+                      <service.icon className="h-6 w-6" />
+                    </div>
                   <h3 className="text-xl font-bold text-white mb-2">{service.title}</h3>
                   <p className="text-gray-300">{service.description}</p>
                 </div>

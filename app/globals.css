@@ -3,6 +3,10 @@
 
 @custom-variant dark (&:is(.dark *));
 
+@theme {
+  --color-purple-primary: #641E7C;
+}
+
 /* ============================================================================
    ProxiTech Brand Colour Palette - Based on #641E7C
    ============================================================================ */
@@ -17,10 +21,10 @@
   --popover-foreground: oklch(0.15 0.02 300);
 
   /* Primary purple: #641E7C - Standard brand colour */
-  --primary: rgb(100, 30, 124);
-  --primary-foreground: rgb(255, 255, 255);
-  --primary-hover: rgb(115, 35, 142);
-  --primary-active: rgb(85, 25, 106);
+  --primary: #641E7C;
+  --primary-foreground: #ffffff;
+  --primary-hover: #73238E;
+  --primary-active: #55196A;
 
   /* UI Components */
   --secondary: oklch(0.97 0.02 300);
@@ -37,10 +41,10 @@
   /* Borders and inputs */
   --border: oklch(0.9 0.01 300);
   --input: oklch(0.9 0.01 300);
-  --ring: rgb(100, 30, 124);
+  --ring: #641E7C;
 
   /* Chart colours for data visualisation */
-  --chart-1: rgb(100, 30, 124);
+  --chart-1: #641E7C;
   --chart-2: rgb(110, 40, 134);
   --chart-3: rgb(120, 50, 144);
   --chart-4: rgb(130, 60, 154);
@@ -70,10 +74,10 @@
   --popover-foreground: oklch(0.98 0.005 300);
 
   /* Primary purple: #641E7C - Same brand colour for consistency */
-  --primary: rgb(100, 30, 124);
-  --primary-foreground: rgb(255, 255, 255);
-  --primary-hover: rgb(115, 35, 142);
-  --primary-active: rgb(85, 25, 106);
+  --primary: #641E7C;
+  --primary-foreground: #ffffff;
+  --primary-hover: #73238E;
+  --primary-active: #55196A;
 
   /* UI Components */
   --secondary: oklch(0.25 0.05 300);
@@ -90,10 +94,10 @@
   /* Borders and inputs */
   --border: oklch(0.25 0.05 300);
   --input: oklch(0.25 0.05 300);
-  --ring: rgb(100, 30, 124);
+  --ring: #641E7C;
 
   /* Chart colours optimised for dark backgrounds */
-  --chart-1: rgb(100, 30, 124);
+  --chart-1: #641E7C;
   --chart-2: rgb(110, 40, 134);
   --chart-3: rgb(120, 50, 144);
   --chart-4: rgb(130, 60, 154);
@@ -220,6 +224,10 @@
     color: var(--primary);
   }
   
+  .text-purple-primary\/80 {
+    color: color-mix(in srgb, var(--primary) 80%, transparent);
+  }
+  
   .bg-purple-primary {
     background-color: var(--primary);
   }
@@ -232,8 +240,36 @@
     background-color: color-mix(in srgb, var(--primary) 20%, transparent);
   }
   
+  .bg-purple-primary\/30 {
+    background-color: color-mix(in srgb, var(--primary) 30%, transparent);
+  }
+  
+  .bg-purple-primary\/90 {
+    background-color: color-mix(in srgb, var(--primary) 90%, transparent);
+  }
+  
   .border-purple-primary {
     border-color: var(--primary);
+  }
+  
+  .hover\:bg-purple-primary\/10:hover {
+    background-color: color-mix(in srgb, var(--primary) 10%, transparent);
+  }
+  
+  .hover\:bg-purple-primary\/20:hover {
+    background-color: color-mix(in srgb, var(--primary) 20%, transparent);
+  }
+  
+  .hover\:bg-purple-primary\/30:hover {
+    background-color: color-mix(in srgb, var(--primary) 30%, transparent);
+  }
+  
+  .hover\:bg-purple-primary\/90:hover {
+    background-color: color-mix(in srgb, var(--primary) 90%, transparent);
+  }
+  
+  .group-hover\:text-purple-primary\/80:is(.group:hover *) {
+    color: color-mix(in srgb, var(--primary) 80%, transparent);
   }
   
   /* ============================================================================
@@ -276,6 +312,14 @@
   
   .btn-purple-ghost:hover {
     background-color: color-mix(in srgb, var(--primary) 10%, transparent);
+  }
+  
+  .dark .btn-purple-ghost {
+    color: white;
+  }
+  
+  .dark .btn-purple-ghost:hover {
+    background-color: color-mix(in srgb, var(--primary) 20%, transparent);
   }
   
   /* Purple text utility */
@@ -412,4 +456,133 @@
     animation: none;
     opacity: 1;
   }
+}
+
+/* ============================================================================
+   Markdown Prose Styles for Blog Posts
+   ============================================================================ */
+
+.prose {
+  @apply text-gray-200;
+  max-width: none;
+}
+
+.prose h1 {
+  @apply text-4xl font-bold text-white mt-8 mb-4;
+}
+
+.prose h2 {
+  @apply text-3xl font-bold text-white mt-8 mb-4;
+}
+
+.prose h3 {
+  @apply text-2xl font-semibold text-white mt-6 mb-3;
+}
+
+.prose h4 {
+  @apply text-xl font-semibold text-white mt-4 mb-2;
+}
+
+.prose h5 {
+  @apply text-lg font-semibold text-white mt-4 mb-2;
+}
+
+.prose h6 {
+  @apply text-base font-semibold text-white mt-4 mb-2;
+}
+
+.prose p {
+  @apply text-gray-300 mb-4 leading-7;
+}
+
+.prose a {
+  color: #641E7C;
+  text-decoration: underline;
+}
+
+.prose a:hover {
+  color: color-mix(in srgb, #641E7C 80%, transparent);
+}
+
+.prose strong {
+  @apply font-bold text-white;
+}
+
+.prose em {
+  @apply italic;
+}
+
+.prose ul,
+.prose ol {
+  @apply mb-4 pl-6;
+}
+
+.prose ul {
+  @apply list-disc;
+}
+
+.prose ol {
+  @apply list-decimal;
+}
+
+.prose li {
+  @apply text-gray-300 mb-2;
+}
+
+.prose li > p {
+  @apply mb-2;
+}
+
+.prose blockquote {
+  border-left: 4px solid var(--primary);
+  padding-left: 1rem;
+  font-style: italic;
+  color: rgb(209, 213, 219);
+  margin: 1rem 0;
+}
+
+.prose code {
+  background-color: rgb(31, 41, 55);
+  color: var(--primary);
+  padding: 0.125rem 0.375rem;
+  border-radius: 0.25rem;
+  font-size: 0.875rem;
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+}
+
+.prose pre {
+  @apply bg-gray-900 border border-gray-700 rounded-lg p-4 overflow-x-auto mb-4;
+}
+
+.prose pre code {
+  @apply bg-transparent text-gray-200 p-0;
+  color: inherit;
+}
+
+.prose img {
+  @apply rounded-lg my-6 w-full h-auto;
+}
+
+.prose hr {
+  @apply border-gray-700 my-8;
+}
+
+.prose table {
+  @apply w-full border-collapse mb-4;
+}
+
+.prose thead {
+  @apply bg-gray-800;
+}
+
+.prose th {
+  @apply border border-gray-700 px-4 py-2 text-left font-semibold text-white;
+}
+
+.prose td {
+  @apply border border-gray-700 px-4 py-2 text-gray-300;
+}
+
+.prose tbody tr:nth-child(even) {
+  @apply bg-gray-800/50;
 }

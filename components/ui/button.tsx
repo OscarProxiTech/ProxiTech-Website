@@ -21,7 +21,7 @@ const buttonVariants = cva(
         link: 'text-primary underline-offset-4 hover:underline',
         'purple-solid': 'bg-purple-primary text-white hover:bg-purple-primary/90 shadow-lg',
         'purple-outline': 'border-2 border-purple-primary bg-purple-primary/20 hover:bg-purple-primary/30 text-purple-primary dark:text-white',
-        'purple-ghost': 'text-purple-primary bg-transparent hover:bg-purple-primary/10',
+        'purple-ghost': 'text-purple-primary bg-transparent hover:bg-purple-primary/10 dark:text-white dark:hover:bg-purple-primary/20',
       },
       size: {
         default: 'h-9 px-4 py-2 has-[>svg]:px-3',

@@ -3,28 +3,14 @@ import { ThemedCard, ThemedCardHeader, ThemedCardTitle, ThemedCardDescription, T
 import { Button } from "@/components/ui/button"
 import { ArrowRight, Calendar } from "lucide-react"
 import Link from "next/link"
+import Image from "next/image"
+import type { BlogPost } from "@/lib/blog-types"
 
-export function BlogHighlights() {
-  const posts = [
-    {
-      title: "Getting Started with Robotics in the Classroom",
-      excerpt: "A comprehensive guide for educators looking to introduce robotics to their students.",
-      date: "2025-10-15",
-      image: "/placeholder.svg?height=200&width=400",
-    },
-    {
-      title: "The Future of AI in Education",
-      excerpt: "Exploring how artificial intelligence is transforming learning experiences.",
-      date: "2025-10-08",
-      image: "/placeholder.svg?height=200&width=400",
-    },
-    {
-      title: "Building Your First Autonomous Robot",
-      excerpt: "Step-by-step tutorial for creating a simple autonomous navigation system.",
-      date: "2025-10-01",
-      image: "/placeholder.svg?height=200&width=400",
-    },
-  ]
+interface BlogHighlightsProps {
+  posts: BlogPost[]
+}
+
+export function BlogHighlights({ posts }: BlogHighlightsProps) {
 
   return (
     <Section variant="primary">
@@ -37,32 +23,36 @@ export function BlogHighlights() {
         </SectionHeader>
 
         <div className="grid md:grid-cols-3 gap-8 mb-8">
-          {posts.map((post, index) => (
-            <ThemedCard key={index} className="hover:shadow-lg hover:shadow-primary/20 transition-shadow overflow-hidden">
+          {posts.map((post) => (
+            <Link key={post.slug} href={`/blog/${post.slug}`}>
+              <ThemedCard className="hover:shadow-lg hover:shadow-primary/20 transition-shadow overflow-hidden h-full cursor-pointer group">
               <div className="aspect-video overflow-hidden">
-                <img
-                  src={post.image || "/placeholder.svg"}
+                  <Image
+                    src={post.thumbnail || "/placeholder.svg"}
                   alt={post.title}
+                    width={400}
+                    height={225}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                 />
               </div>
-              <ThemedCardHeader>
+                <ThemedCardHeader>
                 <div className="flex items-center gap-2 text-xs text-gray-500 mb-2">
                   <Calendar className="h-3 w-3" />
                   {new Date(post.date).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })}
                 </div>
-                <ThemedCardTitle className="text-lg group-hover:text-purple-primary/80 transition-colors">
+                  <ThemedCardTitle className="text-lg group-hover:text-gray-300 transition-colors">
                   {post.title}
-                </ThemedCardTitle>
-                <ThemedCardDescription>{post.excerpt}</ThemedCardDescription>
-              </ThemedCardHeader>
-              <ThemedCardContent>
-                <Button variant="purple-ghost" className="group/btn p-0 h-auto">
+                  </ThemedCardTitle>
+                  <ThemedCardDescription>{post.excerpt}</ThemedCardDescription>
+                </ThemedCardHeader>
+                <ThemedCardContent>
+                  <Button variant="purple-ghost" className="group/btn p-0 h-auto">
                   Read More
                   <ArrowRight className="ml-2 h-4 w-4 group-hover/btn:translate-x-1 transition-transform" />
                 </Button>
-              </ThemedCardContent>
-            </ThemedCard>
+                </ThemedCardContent>
+              </ThemedCard>
+            </Link>
           ))}
         </div>
 

@@ -154,7 +154,8 @@ assetPrefix: '/proxitech-website',
 /
 ├── app/                    # Next.js app directory
 │   ├── about/             # About page
-│   ├── blog/              # Blog page
+│   ├── blog/              # Blog pages
+│   │   └── [slug]/       # Individual blog post pages
 │   ├── contact/           # Contact page
 │   ├── education/         # Education pages
 │   ├── engineering/       # Engineering pages
@@ -163,10 +164,20 @@ assetPrefix: '/proxitech-website',
 ├── components/            # React components
 │   ├── ui/               # shadcn/ui components
 │   └── ...               # Site-specific components
+├── content/               # Content files
+│   └── blog/             # Markdown blog posts
 ├── lib/                   # Utilities
+│   ├── blog.ts           # Blog post utilities
+│   ├── images.ts         # Image library utilities
 │   └── utils.ts          # Helper functions
 ├── public/                # Static assets
 │   ├── images/
+│   │   ├── blog/         # Blog images
+│   │   │   ├── thumbnails/  # Blog post thumbnails
+│   │   │   └── content/     # In-post images
+│   │   ├── workshops/     # Workshop galleries
+│   │   ├── projects/     # Engineering project images
+│   │   ├── gallery/      # General gallery images
 │   │   ├── logos/        # Icon files
 │   │   ├── branding/     # Brand images
 │   │   └── placeholders/ # Placeholder images
@@ -181,6 +192,118 @@ assetPrefix: '/proxitech-website',
 - **Tailwind CSS** - Styling
 - **shadcn/ui** - UI components
 - **Radix UI** - Accessible component primitives
+
+## Content Management
+
+### Creating Blog Posts
+
+Blog posts are written in Markdown format and stored in the `content/blog/` directory.
+
+#### Blog Post Template
+
+Create a new file with the naming format: `YYYY-MM-DD-slug.md`
+
+Example: `2025-01-15-getting-started-robotics.md`
+
+```markdown
+---
+title: "Your Blog Post Title"
+excerpt: "A brief description that appears in listings"
+date: "2025-01-15"
+category: "Education"
+thumbnail: "/images/blog/thumbnails/your-thumbnail.jpg"
+author: "Oscar Lloyd"
+tags: ["robotics", "education", "tutorial"]
+---
+
+# Your Blog Post Title
+
+Your blog post content goes here. You can use full Markdown syntax including:
+
+- Lists
+- **Bold text**
+- *Italic text*
+- Code blocks
+- Images
+- Tables
+- And more!
+
+## Code Example
+
+\`\`\`python
+def hello_world():
+    print("Hello, World!")
+\`\`\`
+
+## Images
+
+You can reference images from the image library:
+
+![Description](/images/blog/content/your-image.jpg)
+```
+
+#### Frontmatter Fields
+
+- `title` (required): The post title
+- `excerpt` (required): Short description for listings
+- `date` (required): Publication date (YYYY-MM-DD format)
+- `category` (required): Post category (e.g., "Education", "Engineering", "AI")
+- `thumbnail` (optional): Path to thumbnail image
+- `author` (optional): Author name
+- `tags` (optional): Array of tags
+
+#### Adding Images to Blog Posts
+
+1. Upload images to `public/images/blog/content/`
+2. Reference them in markdown: `![Alt text](/images/blog/content/filename.jpg)`
+3. For thumbnails, upload to `public/images/blog/thumbnails/` and reference in frontmatter
+
+### Image Library System
+
+The image library provides an organised way to manage and display images across the site.
+
+#### Folder Structure
+
+```
+public/images/
+├── blog/
+│   ├── thumbnails/     # Blog post thumbnails
+│   └── content/        # In-post images
+├── workshops/          # Workshop galleries (subfolders per workshop)
+├── projects/           # Engineering project images (subfolders per project)
+└── gallery/           # General gallery images
+```
+
+#### Using Images in Components
+
+**RotatingImages Component** - Random selection of images:
+
+```tsx
+import { RotatingImages } from "@/components/ui/rotating-images"
+import { getImagesInFolder } from "@/lib/images"
+
+// In your component
+const images = getImagesInFolder("gallery")
+<RotatingImages images={images} count={10} columns={3} />
+```
+
+**ImageGallery Component** - Display all images:
+
+```tsx
+import { ImageGallery } from "@/components/ui/image-gallery"
+import { getImagesInFolder } from "@/lib/images"
+
+const images = getImagesInFolder("workshops/intro-robotics")
+<ImageGallery images={images} columns={3} aspectRatio="video" />
+```
+
+#### Image Utility Functions
+
+- `getImagesInFolder(folderPath)`: Get all images in a folder
+- `getRandomImages(folderPath, count)`: Get random selection (build-time)
+- `getImagePath(category, filename)`: Get full path to specific image
+
+**Note**: For client-side randomisation, use the `RotatingImages` component which shuffles images on mount.
 
 ## Contributing
 

@@ -16,8 +16,10 @@ interface NavbarProps {
 export function Navbar({ mode, setMode }: NavbarProps) {
   const [scrolled, setScrolled] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
+    setMounted(true)
     const handleScroll = () => {
       setScrolled(window.scrollY > 20)
     }
@@ -40,7 +42,7 @@ export function Navbar({ mode, setMode }: NavbarProps) {
         <div className="flex items-center justify-between h-16">
           <Link href="/" className="flex items-center">
             <Image
-              src={mode === "engineering" ? "/images/logos/proxitech-icon-dark.png" : "/images/logos/proxitech-icon.png"}
+              src={mounted && mode === "engineering" ? "/images/logos/proxitech-icon-dark.png" : "/images/logos/proxitech-icon.png"}
               alt="ProxiTech"
               width={40}
               height={40}
@@ -87,6 +89,39 @@ export function Navbar({ mode, setMode }: NavbarProps) {
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
                   <Link
+                    href="/education/resources"
+                    className={cn(
+                      "cursor-pointer",
+                      mode === "engineering" ? "text-gray-300 hover:text-white" : "text-gray-700 hover:text-gray-900",
+                    )}
+                  >
+                    Resources
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link
+                    href="/education/workshops"
+                    className={cn(
+                      "cursor-pointer",
+                      mode === "engineering" ? "text-gray-300 hover:text-white" : "text-gray-700 hover:text-gray-900",
+                    )}
+                  >
+                    Workshops
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link
+                    href="/education/courses"
+                    className={cn(
+                      "cursor-pointer",
+                      mode === "engineering" ? "text-gray-300 hover:text-white" : "text-gray-700 hover:text-gray-900",
+                    )}
+                  >
+                    Courses
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link
                     href="/education/gallery"
                     className={cn(
                       "cursor-pointer",
@@ -125,6 +160,28 @@ export function Navbar({ mode, setMode }: NavbarProps) {
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
                   <Link
+                    href="/engineering/projects"
+                    className={cn(
+                      "cursor-pointer",
+                      mode === "engineering" ? "text-gray-300 hover:text-white" : "text-gray-700 hover:text-gray-900",
+                    )}
+                  >
+                    Projects
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link
+                    href="/engineering/research-and-dev"
+                    className={cn(
+                      "cursor-pointer",
+                      mode === "engineering" ? "text-gray-300 hover:text-white" : "text-gray-700 hover:text-gray-900",
+                    )}
+                  >
+                    Research & Dev
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link
                     href="/blog"
                     className={cn(
                       "cursor-pointer",
@@ -136,6 +193,16 @@ export function Navbar({ mode, setMode }: NavbarProps) {
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
+
+            <Link
+              href="/store"
+              className={cn(
+                "text-sm font-medium transition-colors",
+                mode === "engineering" ? "text-gray-300 hover:text-white" : "text-gray-700 hover:text-gray-900",
+              )}
+            >
+              Store
+            </Link>
 
             <Link
               href="/about"
@@ -213,6 +280,36 @@ export function Navbar({ mode, setMode }: NavbarProps) {
                 Overview
               </Link>
               <Link
+                href="/education/resources"
+                className={cn(
+                  "block py-3 pl-8 text-base transition-colors",
+                  mode === "engineering" ? "text-gray-400 hover:text-white" : "text-gray-600 hover:text-gray-900",
+                )}
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Resources
+              </Link>
+              <Link
+                href="/education/workshops"
+                className={cn(
+                  "block py-3 pl-8 text-base transition-colors",
+                  mode === "engineering" ? "text-gray-400 hover:text-white" : "text-gray-600 hover:text-gray-900",
+                )}
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Workshops
+              </Link>
+              <Link
+                href="/education/courses"
+                className={cn(
+                  "block py-3 pl-8 text-base transition-colors",
+                  mode === "engineering" ? "text-gray-400 hover:text-white" : "text-gray-600 hover:text-gray-900",
+                )}
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Courses
+              </Link>
+              <Link
                 href="/education/gallery"
                 className={cn(
                   "block py-3 pl-8 text-base transition-colors",
@@ -242,6 +339,26 @@ export function Navbar({ mode, setMode }: NavbarProps) {
                 Overview
               </Link>
               <Link
+                href="/engineering/projects"
+                className={cn(
+                  "block py-3 pl-8 text-base transition-colors",
+                  mode === "engineering" ? "text-gray-400 hover:text-white" : "text-gray-600 hover:text-gray-900",
+                )}
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Projects
+              </Link>
+              <Link
+                href="/engineering/research-and-dev"
+                className={cn(
+                  "block py-3 pl-8 text-base transition-colors",
+                  mode === "engineering" ? "text-gray-400 hover:text-white" : "text-gray-600 hover:text-gray-900",
+                )}
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Research & Dev
+              </Link>
+              <Link
                 href="/blog"
                 className={cn(
                   "block py-3 pl-8 text-base transition-colors",
@@ -252,6 +369,16 @@ export function Navbar({ mode, setMode }: NavbarProps) {
                 Blog
               </Link>
             </div>
+            <Link
+              href="/store"
+              className={cn(
+                "block py-4 pl-6 text-lg font-medium transition-colors",
+                mode === "engineering" ? "text-gray-300 hover:text-white" : "text-gray-700 hover:text-gray-900",
+              )}
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Store
+            </Link>
             <Link
               href="/about"
               className={cn(
