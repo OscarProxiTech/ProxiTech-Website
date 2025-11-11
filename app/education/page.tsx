@@ -2,9 +2,10 @@ import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Users, Trophy, BookOpen, Lightbulb, ArrowRight } from "lucide-react"
+import { Users, Trophy, BookOpen, Lightbulb, ArrowRight, Calendar } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
+import { siteLinks } from "@/lib/site-links"
 
 export default function EducationPage() {
   const programs = [
@@ -56,12 +57,20 @@ export default function EducationPage() {
                 Our education programs bring robotics and AI to life in the classroom, empowering students with hands-on
                 experience and real-world problem-solving skills.
               </p>
+              <div className="flex gap-4 justify-center flex-wrap">
               <Link href="/#contact">
                 <Button size="lg">
                   Get Started
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               </Link>
+                <a href={siteLinks.events.humanitix} target="_blank" rel="noopener noreferrer">
+                  <Button size="lg" variant="outline">
+                    <Calendar className="mr-2 h-4 w-4" />
+                    View Events
+                  </Button>
+                </a>
+              </div>
             </div>
           </div>
         </section>
@@ -117,7 +126,7 @@ export default function EducationPage() {
           </div>
         </section>
       </main>
-      <Footer />
+      <Footer mode="education" />
     </>
   )
 }

@@ -30,8 +30,19 @@ jobs:
       - name: Install dependencies
         run: npm install --legacy-peer-deps
       
+      - name: Fetch social media posts
+        run: node scripts/fetch-social-posts.js
+        env:
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+      
       - name: Build
         run: npm run build
+      
+      - name: Verify CNAME and .nojekyll
+        run: |
+          echo "Checking deployment files..."
+          ls -la out/CNAME out/.nojekyll || true
+          echo "CNAME content: $(cat out/CNAME)"
       
       - name: Setup Pages
         uses: actions/configure-pages@v4

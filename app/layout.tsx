@@ -41,6 +41,25 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <style dangerouslySetInnerHTML={{ __html: `
+          /* Prevent right-click and drag on images for copyright protection */
+          img {
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            -webkit-user-drag: none;
+            -khtml-user-drag: none;
+            -moz-user-drag: none;
+            -o-user-drag: none;
+            pointer-events: auto;
+          }
+          img:not([draggable="true"]) {
+            -webkit-touch-callout: none;
+          }
+        `}} />
+      </head>
       <body className={`${geist.className} font-sans antialiased`}>
         {children}
         <Analytics />

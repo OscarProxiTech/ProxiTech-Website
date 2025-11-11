@@ -1,17 +1,24 @@
 # ProxiTech Website
 
-A modern, responsive website for ProxiTech built with Next.js and TypeScript.
+A modern, responsive website for ProxiTech - empowering the next generation with robotics and AI education while delivering innovative engineering solutions.
 
-## Getting Started
+## 🚀 Tech Stack
 
-### Prerequisites
+- **Next.js 16** - React framework with App Router
+- **TypeScript** - Type safety and better developer experience
+- **Tailwind CSS** - Utility-first styling
+- **shadcn/ui** - Beautiful, accessible UI components
+- **Radix UI** - Unstyled, accessible component primitives
+- **Markdown** - Content management for blog posts
+
+## 📋 Prerequisites
 
 - Node.js >= 20.9.0 (required for Next.js 16)
 - npm or pnpm
 
 ### Installing Node.js
 
-If you don't have Node.js 20+ installed, you can use [nvm](https://github.com/nvm-sh/nvm) to manage Node.js versions:
+If you don't have Node.js 20+ installed, use [nvm](https://github.com/nvm-sh/nvm):
 
 ```bash
 # Install nvm
@@ -25,15 +32,15 @@ nvm use 20
 node --version
 ```
 
+## 🛠️ Development
+
 ### Installation
 
 ```bash
 npm install --legacy-peer-deps
 ```
 
-### Development
-
-Run the development server:
+### Run Development Server
 
 ```bash
 npm run dev
@@ -41,114 +48,15 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-### Building for Production
-
-Build a static export (for GitHub Pages):
+### Build for Production
 
 ```bash
 npm run build
 ```
 
-The static files will be generated in the `out` directory.
+Static files will be generated in the `out` directory.
 
-## Deploying to GitHub Pages
-
-### Initial Setup
-
-1. Create a new repository on GitHub (e.g., `proxitech-website`)
-
-2. Push your code to GitHub:
-
-```bash
-git add .
-git commit -m "Initial commit"
-git remote add origin https://github.com/YOUR-USERNAME/proxitech-website.git
-git push -u origin main
-```
-
-### Configure GitHub Pages
-
-1. Go to your repository on GitHub
-2. Navigate to Settings → Pages
-3. Under "Source", select "GitHub Actions"
-4. Create a workflow file at `.github/workflows/deploy.yml`:
-
-```yaml
-name: Deploy to GitHub Pages
-
-on:
-  push:
-    branches:
-      - main
-
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
-
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-          cache: 'npm'
-      
-      - name: Install dependencies
-        run: npm install --legacy-peer-deps
-      
-      - name: Build
-        run: npm run build
-      
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
-      
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: './out'
-      
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
-```
-
-5. Commit and push the workflow file:
-
-```bash
-mkdir -p .github/workflows
-# Create the deploy.yml file above
-git add .github/workflows/deploy.yml
-git commit -m "Add GitHub Pages deployment workflow"
-git push
-```
-
-### Using a Custom Domain
-
-If you want to deploy to `username.github.io` (your main GitHub Pages site), update `next.config.mjs` and uncomment the `basePath` line:
-
-```javascript
-basePath: '/proxitech-website',
-assetPrefix: '/proxitech-website',
-```
-
-## Project Structure
+## 📁 Project Structure
 
 ```
 /
@@ -171,44 +79,37 @@ assetPrefix: '/proxitech-website',
 │   ├── images.ts         # Image library utilities
 │   └── utils.ts          # Helper functions
 ├── public/                # Static assets
-│   ├── images/
+│   ├── images/           # Image library
 │   │   ├── blog/         # Blog images
-│   │   │   ├── thumbnails/  # Blog post thumbnails
-│   │   │   └── content/     # In-post images
-│   │   ├── workshops/     # Workshop galleries
+│   │   ├── workshops/    # Workshop galleries
 │   │   ├── projects/     # Engineering project images
-│   │   ├── gallery/      # General gallery images
-│   │   ├── logos/        # Icon files
-│   │   ├── branding/     # Brand images
-│   │   └── placeholders/ # Placeholder images
-│   └── CNAME             # Custom domain config
+│   │   └── gallery/      # General gallery images
 └── out/                   # Build output (generated)
 ```
 
-## Tech Stack
+## 🎨 Design System
 
-- **Next.js 16** - React framework
-- **TypeScript** - Type safety
-- **Tailwind CSS** - Styling
-- **shadcn/ui** - UI components
-- **Radix UI** - Accessible component primitives
+This project uses a comprehensive modular design system with:
+- Consistent colour palette based on ProxiTech purple (#641E7C)
+- Automatic light/dark theme adaptation
+- Reusable utility classes and components
 
-## Content Management
+See `THEME_SYSTEM.md` for detailed design system documentation.
+
+## 📝 Content Management
 
 ### Creating Blog Posts
 
-Blog posts are written in Markdown format and stored in the `content/blog/` directory.
+Blog posts are written in Markdown and stored in `content/blog/`.
 
-#### Blog Post Template
+#### Template
 
-Create a new file with the naming format: `YYYY-MM-DD-slug.md`
-
-Example: `2025-01-15-getting-started-robotics.md`
+Create a file with format: `YYYY-MM-DD-slug.md`
 
 ```markdown
 ---
 title: "Your Blog Post Title"
-excerpt: "A brief description that appears in listings"
+excerpt: "A brief description"
 date: "2025-01-15"
 category: "Education"
 thumbnail: "/images/blog/thumbnails/your-thumbnail.jpg"
@@ -218,98 +119,66 @@ tags: ["robotics", "education", "tutorial"]
 
 # Your Blog Post Title
 
-Your blog post content goes here. You can use full Markdown syntax including:
-
-- Lists
-- **Bold text**
-- *Italic text*
-- Code blocks
-- Images
-- Tables
-- And more!
-
-## Code Example
-
-\`\`\`python
-def hello_world():
-    print("Hello, World!")
-\`\`\`
-
-## Images
-
-You can reference images from the image library:
-
-![Description](/images/blog/content/your-image.jpg)
+Your content here with full Markdown support...
 ```
 
 #### Frontmatter Fields
 
-- `title` (required): The post title
+- `title` (required): Post title
 - `excerpt` (required): Short description for listings
-- `date` (required): Publication date (YYYY-MM-DD format)
-- `category` (required): Post category (e.g., "Education", "Engineering", "AI")
+- `date` (required): Publication date (YYYY-MM-DD)
+- `category` (required): Post category
 - `thumbnail` (optional): Path to thumbnail image
 - `author` (optional): Author name
 - `tags` (optional): Array of tags
 
-#### Adding Images to Blog Posts
-
-1. Upload images to `public/images/blog/content/`
-2. Reference them in markdown: `![Alt text](/images/blog/content/filename.jpg)`
-3. For thumbnails, upload to `public/images/blog/thumbnails/` and reference in frontmatter
-
 ### Image Library System
 
-The image library provides an organised way to manage and display images across the site.
-
-#### Folder Structure
-
-```
-public/images/
-├── blog/
-│   ├── thumbnails/     # Blog post thumbnails
-│   └── content/        # In-post images
-├── workshops/          # Workshop galleries (subfolders per workshop)
-├── projects/           # Engineering project images (subfolders per project)
-└── gallery/           # General gallery images
-```
-
-#### Using Images in Components
-
-**RotatingImages Component** - Random selection of images:
+Organised image management with utility functions:
 
 ```tsx
 import { RotatingImages } from "@/components/ui/rotating-images"
 import { getImagesInFolder } from "@/lib/images"
 
-// In your component
+// Random selection
 const images = getImagesInFolder("gallery")
 <RotatingImages images={images} count={10} columns={3} />
-```
 
-**ImageGallery Component** - Display all images:
-
-```tsx
+// Gallery view
 import { ImageGallery } from "@/components/ui/image-gallery"
-import { getImagesInFolder } from "@/lib/images"
-
 const images = getImagesInFolder("workshops/intro-robotics")
 <ImageGallery images={images} columns={3} aspectRatio="video" />
 ```
 
-#### Image Utility Functions
+## 🔐 Social Media Integration
 
-- `getImagesInFolder(folderPath)`: Get all images in a folder
-- `getRandomImages(folderPath, count)`: Get random selection (build-time)
-- `getImagePath(category, filename)`: Get full path to specific image
+The website fetches latest posts from social media platforms during build time.
 
-**Note**: For client-side randomisation, use the `RotatingImages` component which shuffles images on mount.
+### Setting Up API Keys
 
-## Contributing
+**⚠️ Important:** Never commit API keys. Use environment variables locally and GitHub Secrets for CI/CD.
+
+1. **Get a YouTube Data API v3 Key:**
+   - Go to [Google Cloud Console](https://console.cloud.google.com/)
+   - Enable "YouTube Data API v3"
+   - Create an API key
+
+2. **Local Development:**
+   - Create `.env.local` (already in `.gitignore`)
+   - Add: `YOUTUBE_API_KEY=your_key_here`
+   - Run `npm run build` - posts fetched automatically
+
+3. **GitHub Actions (Production):**
+   - Add repository secret: `YOUTUBE_API_KEY`
+   - Build workflow will use it automatically
+
+The build script generates `public/social-posts.json` (safe to commit - no secrets).
+
+## 🤝 Contributing
 
 ### Commit Message Format
 
-This project follows [Conventional Commits](https://www.conventionalcommits.org/) specification:
+This project follows [Conventional Commits](https://www.conventionalcommits.org/):
 
 ```
 <type>(<scope>): <subject>
@@ -327,12 +196,22 @@ This project follows [Conventional Commits](https://www.conventionalcommits.org/
 
 **Examples:**
 ```bash
-feat(theme): add comprehensive colour palette based on #641E7C
+feat(theme): add comprehensive colour palette
 fix(navbar): correct icon paths to use local images
 refactor: reorganise image directory structure
-docs: update README with Conventional Commits format
+docs: update README with contribution guidelines
 ```
 
-## License
+## 📄 License
 
-MIT
+### Code
+The source code is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
+
+### Content & Assets
+All logos, branding, images, blog content, and other assets are **© 2025 ProxiTech. All Rights Reserved.**
+
+These materials may not be used without explicit permission. For licensing inquiries: oscar@proxitech.com.au
+
+---
+
+**ProxiTech** - Empowering innovation through robotics, AI, and education.

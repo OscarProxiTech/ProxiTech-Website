@@ -6,7 +6,7 @@ import { DualHeroSection } from "@/components/dual-hero-section"
 import { AboutSection } from "@/components/about-section"
 import { EducationHighlights } from "@/components/education-highlights"
 import { PartnersSection } from "@/components/partners-section"
-import { SocialMediaSection } from "@/components/social-media-section"
+import { SocialMediaSectionWrapper } from "@/components/social-media-section-wrapper"
 import { ConsultancySection } from "@/components/consultancy-section"
 import { EngineeringProjects } from "@/components/engineering-projects"
 // Blog highlights will be fetched server-side via the wrapper component
@@ -28,7 +28,7 @@ export default function HomePage() {
           <>
             <EducationHighlights />
             <PartnersSection />
-            <SocialMediaSection />
+            <SocialMediaSectionWrapper />
           </>
         ) : (
           <>

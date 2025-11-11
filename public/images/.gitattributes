@@ -1,0 +1,8 @@
+# Mark all images as binary files (prevent Git text processing)
+*.jpg binary
+*.jpeg binary
+*.png binary
+*.gif binary
+*.svg binary
+*.webp binary
+

@@ -1,7 +1,9 @@
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
 import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Target, Eye, Heart, Users } from "lucide-react"
+import { Target, Eye, Heart, Users, Linkedin } from "lucide-react"
+import { siteLinks } from "@/lib/site-links"
+import Link from "next/link"
 
 export default function AboutPage() {
   return (
@@ -119,10 +121,21 @@ export default function AboutPage() {
                   programs while also developing custom engineering solutions for businesses looking to leverage
                   automation and intelligent systems.
                 </p>
-                <p className="text-muted-foreground">
+                <p className="text-muted-foreground mb-6">
                   Our dual focus on education and engineering allows us to stay at the forefront of technological
                   innovation while nurturing the next generation of innovators, problem-solvers, and creators.
                 </p>
+                <div className="flex justify-center mt-8">
+                  <a
+                    href={siteLinks.social.linkedinFounder}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-primary/10 text-primary hover:bg-primary/20 transition-colors"
+                  >
+                    <Linkedin className="h-5 w-5" />
+                    <span>Connect with Founder on LinkedIn</span>
+                  </a>
+                </div>
               </div>
             </div>
           </div>

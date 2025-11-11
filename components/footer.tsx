@@ -2,6 +2,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { Mail, Linkedin, Instagram, Youtube } from "lucide-react"
 import { cn } from "@/lib/utils"
+import { siteLinks, getEmailLink } from "@/lib/site-links"
 
 interface FooterProps {
   mode: "education" | "engineering"
@@ -68,15 +69,17 @@ export function Footer({ mode }: FooterProps) {
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/blog"
+                <a
+                  href={siteLinks.internal.blog}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className={cn(
                     "text-sm transition-colors",
                     mode === "engineering" ? "text-gray-400 hover:text-white" : "text-gray-600 hover:text-gray-900",
                   )}
                 >
                   Blog
-                </Link>
+                </a>
               </li>
               <li>
                 <Link
@@ -99,44 +102,48 @@ export function Footer({ mode }: FooterProps) {
             </h3>
             <div className="flex gap-6">
               <a
-                href="mailto:oscar@proxitech.com.au"
+                href={getEmailLink()}
                 className={cn(
                   "transition-colors",
                   mode === "engineering" ? "text-gray-400 hover:text-white" : "text-gray-600 hover:text-gray-900",
                 )}
+                aria-label="Email ProxiTech"
               >
                 <Mail className="h-6 w-6" />
               </a>
               <a
-                href="https://www.linkedin.com/company/proxitechaus"
+                href={siteLinks.social.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
                 className={cn(
                   "transition-colors",
                   mode === "engineering" ? "text-gray-400 hover:text-white" : "text-gray-600 hover:text-gray-900",
                 )}
+                aria-label="ProxiTech LinkedIn"
               >
                 <Linkedin className="h-6 w-6" />
               </a>
               <a
-                href="https://www.instagram.com/proxitechaus/"
+                href={siteLinks.social.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
                 className={cn(
                   "transition-colors",
                   mode === "engineering" ? "text-gray-400 hover:text-white" : "text-gray-600 hover:text-gray-900",
                 )}
+                aria-label="ProxiTech Instagram"
               >
                 <Instagram className="h-6 w-6" />
               </a>
               <a
-                href="https://www.youtube.com/@OscarProxiTech"
+                href={siteLinks.social.youtube}
                 target="_blank"
                 rel="noopener noreferrer"
                 className={cn(
                   "transition-colors",
                   mode === "engineering" ? "text-gray-400 hover:text-white" : "text-gray-600 hover:text-gray-900",
                 )}
+                aria-label="ProxiTech YouTube"
               >
                 <Youtube className="h-6 w-6" />
               </a>
