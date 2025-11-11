@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - main
+  schedule:
+    # Rebuild every 30 minutes to fetch latest social media posts
+    - cron: '*/30 * * * *'
 
 permissions:
   contents: read
