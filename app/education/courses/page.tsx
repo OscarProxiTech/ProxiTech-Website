@@ -1,27 +1,22 @@
+"use client"
+
+import { ThemeWrapper } from "@/components/theme-wrapper"
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
 
 export default function EducationCoursesPage() {
   return (
-    <>
-      <Navbar mode="education" />
-      <main>
-        <section className="pt-32 pb-20 bg-section-primary">
-          <div className="container mx-auto px-4 text-center">
+    <ThemeWrapper>
+      <Navbar />
+      <main className="min-h-screen pt-20">
+        <section className="container mx-auto px-4 py-20">
+          <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-4xl md:text-5xl font-bold mb-4 text-heading">Courses</h1>
-            <p className="text-lg text-subheading max-w-2xl mx-auto">
-              Structured learning paths for robotics, AI, and engineering fundamentals.
-            </p>
+            <p className="text-lg text-subheading">Page content coming soon.</p>
           </div>
         </section>
       </main>
-      <Footer mode="education" />
-    </>
+      <Footer />
+    </ThemeWrapper>
   )
 }
-
-
-
-
-
-

@@ -117,6 +117,59 @@
   --sidebar-ring: oklch(0.439 0 0);
 }
 
+.blog-theme {
+  /* Blog Theme (Mixed) - Dark background with light content cards */
+  --background: oklch(0.12 0.02 300);
+  --foreground: oklch(0.98 0.005 300);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.15 0.02 300);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.15 0.02 300);
+
+  /* Primary purple: #641E7C - Consistent brand colour */
+  --primary: #641E7C;
+  --primary-foreground: #ffffff;
+  --primary-hover: #73238E;
+  --primary-active: #55196A;
+
+  /* UI Components */
+  --secondary: oklch(0.97 0.02 300);
+  --secondary-foreground: oklch(0.15 0.02 300);
+  --muted: oklch(0.96 0.01 300);
+  --muted-foreground: oklch(0.5 0.02 300);
+  --accent: oklch(0.92 0.04 300);
+  --accent-foreground: oklch(0.15 0.02 300);
+  
+  /* Status colours */
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.99 0.005 300);
+
+  /* Borders and inputs */
+  --border: oklch(0.9 0.01 300);
+  --input: oklch(0.9 0.01 300);
+  --ring: #641E7C;
+
+  /* Chart colours */
+  --chart-1: #641E7C;
+  --chart-2: rgb(110, 40, 134);
+  --chart-3: rgb(120, 50, 144);
+  --chart-4: rgb(130, 60, 154);
+  --chart-5: rgb(140, 70, 164);
+
+  /* Component settings */
+  --radius: 0.625rem;
+  
+  /* Sidebar theme for blog mode */
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+}
+
 @theme inline {
   /* Font families */
   --font-sans: "Geist", "Geist Fallback";
@@ -204,6 +257,14 @@
     @apply bg-gray-50 dark:bg-gray-900;
   }
   
+  .blog-theme .bg-section-primary {
+    @apply bg-gray-950;
+  }
+  
+  .blog-theme .bg-section-secondary {
+    @apply bg-gray-900;
+  }
+  
   /* ============================================================================
      Card Backgrounds & Borders
      ============================================================================ */
@@ -214,6 +275,14 @@
   
   .border-card-themed {
     @apply border-gray-200 dark:border-gray-700;
+  }
+  
+  .blog-theme .bg-card-themed {
+    @apply bg-white;
+  }
+  
+  .blog-theme .border-card-themed {
+    @apply border-gray-200;
   }
   
   /* ============================================================================
@@ -270,56 +339,6 @@
   
   .group-hover\:text-purple-primary\/80:is(.group:hover *) {
     color: color-mix(in srgb, var(--primary) 80%, transparent);
-  }
-  
-  /* ============================================================================
-     Button Utility Classes
-     ============================================================================ */
-  
-  .btn-purple-solid {
-    background-color: var(--primary);
-    color: var(--primary-foreground);
-    border: none;
-  }
-  
-  .btn-purple-solid:hover {
-    background-color: var(--primary-hover);
-  }
-  
-  .btn-purple-solid:active {
-    background-color: var(--primary-active);
-  }
-  
-  .btn-purple-outline {
-    background-color: color-mix(in srgb, var(--primary) 20%, transparent);
-    color: var(--primary);
-    border: 2px solid var(--primary);
-  }
-  
-  .btn-purple-outline:hover {
-    background-color: color-mix(in srgb, var(--primary) 30%, transparent);
-  }
-  
-  .dark .btn-purple-outline {
-    color: white;
-  }
-  
-  .btn-purple-ghost {
-    background-color: transparent;
-    color: var(--primary);
-    border: none;
-  }
-  
-  .btn-purple-ghost:hover {
-    background-color: color-mix(in srgb, var(--primary) 10%, transparent);
-  }
-  
-  .dark .btn-purple-ghost {
-    color: white;
-  }
-  
-  .dark .btn-purple-ghost:hover {
-    background-color: color-mix(in srgb, var(--primary) 20%, transparent);
   }
   
   /* Purple text utility */

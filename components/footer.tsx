@@ -1,29 +1,31 @@
+"use client"
+
 import Link from "next/link"
 import Image from "next/image"
 import { Mail, Linkedin, Instagram, Youtube } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { siteLinks, getEmailLink } from "@/lib/site-links"
+import { useTheme } from "@/lib/theme-context"
 
-interface FooterProps {
-  mode: "education" | "engineering"
-}
+export function Footer() {
+  const { theme } = useTheme()
+  const isDark = theme === "engineering" || theme === "blog"
 
-export function Footer({ mode }: FooterProps) {
   return (
     <footer
-      className={cn("border-t", mode === "engineering" ? "bg-gray-950 border-gray-800" : "bg-white border-gray-200")}
+      className={cn("border-t", isDark ? "bg-gray-950 border-gray-800" : "bg-white border-gray-200")}
     >
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="col-span-1 md:col-span-2">
             <Image
-              src={mode === "engineering" ? "/images/branding/proxitech-logo-dark.png" : "/images/branding/proxitech-logo.png"}
+              src={isDark ? "/images/branding/proxitech-logo-dark.png" : "/images/branding/proxitech-logo.png"}
               alt="ProxiTech"
               width={200}
               height={45}
               className="h-10 w-auto mb-4"
             />
-            <p className={cn("text-sm max-w-md", mode === "engineering" ? "text-gray-400" : "text-gray-600")}>
+            <p className={cn("text-sm max-w-md", isDark ? "text-gray-400" : "text-gray-600")}>
               Empowering Robotics and AI Education. Bridging technology and learning to bring innovation to classrooms
               and industries.
             </p>
@@ -31,27 +33,16 @@ export function Footer({ mode }: FooterProps) {
 
           {/* Quick Links */}
           <div>
-            <h3 className={cn("font-semibold mb-4", mode === "engineering" ? "text-white" : "text-gray-900")}>
+            <h3 className={cn("font-semibold mb-4", isDark ? "text-white" : "text-gray-900")}>
               Quick Links
             </h3>
             <ul className="space-y-2">
               <li>
                 <Link
-                  href="/store"
-                  className={cn(
-                    "text-sm transition-colors",
-                    mode === "engineering" ? "text-gray-400 hover:text-white" : "text-gray-600 hover:text-gray-900",
-                  )}
-                >
-                  Store
-                </Link>
-              </li>
-              <li>
-                <Link
                   href="/education"
                   className={cn(
                     "text-sm transition-colors",
-                    mode === "engineering" ? "text-gray-400 hover:text-white" : "text-gray-600 hover:text-gray-900",
+                    isDark ? "text-gray-400 hover:text-white" : "text-gray-600 hover:text-gray-900",
                   )}
                 >
                   Education
@@ -62,34 +53,32 @@ export function Footer({ mode }: FooterProps) {
                   href="/engineering"
                   className={cn(
                     "text-sm transition-colors",
-                    mode === "engineering" ? "text-gray-400 hover:text-white" : "text-gray-600 hover:text-gray-900",
+                    isDark ? "text-gray-400 hover:text-white" : "text-gray-600 hover:text-gray-900",
                   )}
                 >
                   Engineering
                 </Link>
               </li>
               <li>
-                <a
-                  href={siteLinks.internal.blog}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <Link
+                  href="/blog"
                   className={cn(
                     "text-sm transition-colors",
-                    mode === "engineering" ? "text-gray-400 hover:text-white" : "text-gray-600 hover:text-gray-900",
+                    isDark ? "text-gray-400 hover:text-white" : "text-gray-600 hover:text-gray-900",
                   )}
                 >
                   Blog
-                </a>
+                </Link>
               </li>
               <li>
                 <Link
-                  href="/about"
+                  href="/education/store"
                   className={cn(
                     "text-sm transition-colors",
-                    mode === "engineering" ? "text-gray-400 hover:text-white" : "text-gray-600 hover:text-gray-900",
+                    isDark ? "text-gray-400 hover:text-white" : "text-gray-600 hover:text-gray-900",
                   )}
                 >
-                  About
+                  Store
                 </Link>
               </li>
             </ul>
@@ -97,7 +86,7 @@ export function Footer({ mode }: FooterProps) {
 
           {/* Contact */}
           <div>
-            <h3 className={cn("font-semibold mb-4", mode === "engineering" ? "text-white" : "text-gray-900")}>
+            <h3 className={cn("font-semibold mb-4", isDark ? "text-white" : "text-gray-900")}>
               Connect
             </h3>
             <div className="flex gap-6">
@@ -105,7 +94,7 @@ export function Footer({ mode }: FooterProps) {
                 href={getEmailLink()}
                 className={cn(
                   "transition-colors",
-                  mode === "engineering" ? "text-gray-400 hover:text-white" : "text-gray-600 hover:text-gray-900",
+                  isDark ? "text-gray-400 hover:text-white" : "text-gray-600 hover:text-gray-900",
                 )}
                 aria-label="Email ProxiTech"
               >
@@ -117,7 +106,7 @@ export function Footer({ mode }: FooterProps) {
                 rel="noopener noreferrer"
                 className={cn(
                   "transition-colors",
-                  mode === "engineering" ? "text-gray-400 hover:text-white" : "text-gray-600 hover:text-gray-900",
+                  isDark ? "text-gray-400 hover:text-white" : "text-gray-600 hover:text-gray-900",
                 )}
                 aria-label="ProxiTech LinkedIn"
               >
@@ -129,7 +118,7 @@ export function Footer({ mode }: FooterProps) {
                 rel="noopener noreferrer"
                 className={cn(
                   "transition-colors",
-                  mode === "engineering" ? "text-gray-400 hover:text-white" : "text-gray-600 hover:text-gray-900",
+                  isDark ? "text-gray-400 hover:text-white" : "text-gray-600 hover:text-gray-900",
                 )}
                 aria-label="ProxiTech Instagram"
               >
@@ -141,7 +130,7 @@ export function Footer({ mode }: FooterProps) {
                 rel="noopener noreferrer"
                 className={cn(
                   "transition-colors",
-                  mode === "engineering" ? "text-gray-400 hover:text-white" : "text-gray-600 hover:text-gray-900",
+                  isDark ? "text-gray-400 hover:text-white" : "text-gray-600 hover:text-gray-900",
                 )}
                 aria-label="ProxiTech YouTube"
               >
@@ -154,7 +143,7 @@ export function Footer({ mode }: FooterProps) {
         <div
           className={cn(
             "mt-8 pt-8 border-t text-center text-sm",
-            mode === "engineering" ? "border-gray-800 text-gray-400" : "border-gray-200 text-gray-600",
+            isDark ? "border-gray-800 text-gray-400" : "border-gray-200 text-gray-600",
           )}
         >
           <p>&copy; {new Date().getFullYear()} ProxiTech. All rights reserved.</p>

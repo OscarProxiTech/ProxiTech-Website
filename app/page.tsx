@@ -1,47 +1,24 @@
 "use client"
 
-import { useState } from "react"
+import { ThemeWrapper } from "@/components/theme-wrapper"
 import { Navbar } from "@/components/navbar"
-import { DualHeroSection } from "@/components/dual-hero-section"
-import { AboutSection } from "@/components/about-section"
-import { EducationHighlights } from "@/components/education-highlights"
-import { PartnersSection } from "@/components/partners-section"
-import { SocialMediaSectionWrapper } from "@/components/social-media-section-wrapper"
-import { ConsultancySection } from "@/components/consultancy-section"
-import { EngineeringProjects } from "@/components/engineering-projects"
-// Blog highlights will be fetched server-side via the wrapper component
-import { ContactForm } from "@/components/contact-form"
 import { Footer } from "@/components/footer"
 import { Toaster } from "@/components/ui/toaster"
 
 export default function HomePage() {
-  const [mode, setMode] = useState<"education" | "engineering">("education")
-
   return (
-    <div className={mode === "engineering" ? "dark" : ""}>
-      <Navbar mode={mode} setMode={setMode} />
-      <main>
-        <DualHeroSection mode={mode} setMode={setMode} />
-        <AboutSection mode={mode} />
-
-        {mode === "education" ? (
-          <>
-            <EducationHighlights />
-            <PartnersSection />
-            <SocialMediaSectionWrapper />
-          </>
-        ) : (
-          <>
-            <ConsultancySection />
-            <EngineeringProjects />
-            {/* Blog highlights - temporarily disabled due to server component constraints */}
-          </>
-        )}
-
-        <ContactForm mode={mode} />
+    <ThemeWrapper>
+      <Navbar />
+      <main className="min-h-screen pt-20">
+        <section className="container mx-auto px-4 py-20">
+          <div className="max-w-4xl mx-auto text-center">
+            <h1 className="text-4xl md:text-5xl font-bold mb-4 text-heading">Home</h1>
+            <p className="text-lg text-subheading">Page content coming soon.</p>
+          </div>
+        </section>
       </main>
-      <Footer mode={mode} />
+      <Footer />
       <Toaster />
-    </div>
+    </ThemeWrapper>
   )
 }
