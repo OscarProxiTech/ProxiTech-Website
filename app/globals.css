@@ -1,3 +1,5 @@
+/* stylelint-disable */
+/* Tailwind CSS directives - warnings about @apply, @theme, @custom-variant are expected */
 @import "tailwindcss";
 @import "tw-animate-css";
 
